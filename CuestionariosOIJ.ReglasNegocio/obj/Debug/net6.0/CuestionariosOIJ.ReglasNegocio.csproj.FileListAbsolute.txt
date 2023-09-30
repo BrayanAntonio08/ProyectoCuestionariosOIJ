@@ -1,0 +1,17 @@
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.deps.json
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.Entidades.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.Entidades.pdb
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.AssemblyReference.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.AssemblyInfoInputs.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.AssemblyInfo.cs
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.CopyComplete
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\refint\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\ref\CuestionariosOIJ.ReglasNegocio.dll
