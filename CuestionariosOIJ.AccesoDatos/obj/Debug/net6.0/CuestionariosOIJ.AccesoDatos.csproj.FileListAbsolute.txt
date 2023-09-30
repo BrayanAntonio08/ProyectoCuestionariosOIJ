@@ -1,0 +1,14 @@
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.deps.json
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.runtimeconfig.json
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.csproj.AssemblyReference.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.AssemblyInfoInputs.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.AssemblyInfo.cs
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\refint\CuestionariosOIJ.AccesoDatos.dll
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.genruntimeconfig.cache
+C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\ref\CuestionariosOIJ.AccesoDatos.dll
