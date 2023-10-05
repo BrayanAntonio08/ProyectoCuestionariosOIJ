@@ -2500,11 +2500,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
+      "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
       "projectName": "CuestionariosOIJ.API",
-      "projectPath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
+      "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
       "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.API\\obj\\",
+      "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2521,11 +2521,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
-              "projectPath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj"
+            "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
+              "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj"
             },
-            "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {
-              "projectPath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj"
+            "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {
+              "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj"
             }
           }
         }

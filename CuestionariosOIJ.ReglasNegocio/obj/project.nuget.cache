@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "k4ZR8WiTpG0LbjKBRNjG0py21nAjdDvD6Hn3zHTZFU4bjP3xRFeQrgXX0hPW3tRt1auG0LDN2GfnsIhCR4yqIg==",
+  "dgSpecHash": "R7WL3h5A7K0Fediwbvys7PuIlaM9Worwowm9A+S+cAktKP+I9p/TbqsD9byazA2ADGGSeW8SHGt+ID3v+6v1Yg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
+  "projectFilePath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brayan Vargas\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Brayan Vargas\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

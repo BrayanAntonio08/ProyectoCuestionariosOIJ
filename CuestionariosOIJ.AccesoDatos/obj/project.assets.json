@@ -2019,11 +2019,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
       "projectName": "CuestionariosOIJ.AccesoDatos",
-      "projectPath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
       "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
+      "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",

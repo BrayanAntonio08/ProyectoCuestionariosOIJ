@@ -16,7 +16,7 @@ namespace CuestionariosOIJ.API.Controllers
         public async Task <ActionResult> InsertarCategoria([FromBody] Categoria categoria)
         {
             // Validar los datos recibidos
-            if (categoria == null || categoria.Nombre == null || categoria.Descripcion == null)
+            if (categoria == null || categoria.Nombre == null)
             {
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
@@ -38,5 +38,29 @@ namespace CuestionariosOIJ.API.Controllers
             return await Task.FromResult(Ok(categorias));
         }
 
+        [HttpPut(Name = "ActualizarCategoria")]
+        public async Task<ActionResult<Categoria>> ActualizarCategoria([FromBody] Categoria categoria)
+        {
+            // Validar los datos recibidos
+            if (categoria == null || categoria.Nombre == null)
+            {
+                return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
+            }
+
+            // Guardar la categoria
+            CategoriaRN business = new CategoriaRN();
+            business.ActualizarCategoria(categoria);
+
+            return await Task.FromResult(Ok(categoria));
+        }
+
+        [HttpDelete(Name = "EliminarCategoria")]
+        public async Task<ActionResult> EliminarCategoria([FromBody] Categoria categoria)
+        {
+            CategoriaRN business = new CategoriaRN();
+            business.EliminarCategoria(categoria);
+
+            return await Task.FromResult(Ok()); ;
+        }
     }
 }

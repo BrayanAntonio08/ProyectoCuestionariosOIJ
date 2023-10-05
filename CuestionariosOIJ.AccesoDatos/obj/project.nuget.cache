@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/BbFe0te80EyTkrD2TDdQpGcGvOkE6/UlY8Ryf0CG5MviYljUTpIHfEUedEXXHndMmJOCpe4TE9Qa8hjVQ0y7w==",
+  "dgSpecHash": "80hOU1Spu7kGIloHzoIqAx1N2YY7xCotaIhvuAz1Xq14LNgcRGxCcp1x7EhrBTc49orRi2o1SW+L77GZldwmYg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+  "projectFilePath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brayan Vargas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Brayan Vargas\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

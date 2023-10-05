@@ -12,3 +12,17 @@ C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDato
 C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
 C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.genruntimeconfig.cache
 C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\ref\CuestionariosOIJ.AccesoDatos.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.deps.json
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.runtimeconfig.json
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.csproj.AssemblyReference.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.AssemblyInfoInputs.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.AssemblyInfo.cs
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.csproj.CoreCompileInputs.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\refint\CuestionariosOIJ.AccesoDatos.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\CuestionariosOIJ.AccesoDatos.genruntimeconfig.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.AccesoDatos\obj\Debug\net6.0\ref\CuestionariosOIJ.AccesoDatos.dll

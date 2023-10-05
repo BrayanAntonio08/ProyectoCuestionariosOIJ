@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eXzCIuk7TZZ97QYo+kuMjqTwIoucESDeL/Xcke6VQFgw6xRBMspnN4buVmtspjJk8J+adPaTOmxDBNuTczHE2Q==",
+  "dgSpecHash": "TIO55xOzdXmeyBBpcoyOeQcmxIREM6YVJ3EqT4U0FDjS66B4GZ2xZLQKmymj4+pSI3NRtyHHSB0CEuqLqfQhkA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Brayan Vargas\\source\\repos\\CuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
+  "projectFilePath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Brayan Vargas\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Brayan Vargas\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

@@ -29,6 +29,28 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.InsertarCategoria(nuevoItem);
         }
 
+        public void ActualizarCategoria(Categoria categoria)
+        {
+            CategoriaEF nuevoItem = new CategoriaEF()
+            {
+                Id = categoria.Id,
+                Nombre = categoria.Nombre,
+                Descripcion = categoria.Descripcion,
+            };
+
+            _data.ActualizarCategoria(nuevoItem);
+        }
+
+        public void EliminarCategoria(Categoria categoria)
+        {
+            CategoriaEF itemBorrado = new CategoriaEF()
+            {
+                Id = categoria.Id
+            };
+
+            _data.EliminarCategoria(itemBorrado);
+        } 
+
         public List<Categoria> ListarCategorias()
         {
             List<Categoria> resultado = new List<Categoria>();
@@ -46,6 +68,25 @@ namespace CuestionariosOIJ.ReglasNegocio
             }
 
             return resultado;
+        }
+
+        public Categoria ObtenerPorID(int id)
+        {
+            CategoriaEF result = _data.ObtenerCategoriaPorID(id);
+
+            if(result != null)
+            {
+                Categoria respuesta = new Categoria()
+                {
+                    Id = result.Id,
+                    Nombre = result.Nombre,
+                    Descripcion = result.Descripcion == null? "":result.Descripcion.ToString()
+                };
+
+                return respuesta;
+            }
+
+            return null;
         }
     }
 }

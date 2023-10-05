@@ -15,3 +15,20 @@ C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNego
 C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\refint\CuestionariosOIJ.ReglasNegocio.dll
 C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
 C:\Users\Brayan Vargas\source\repos\CuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\ref\CuestionariosOIJ.ReglasNegocio.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.deps.json
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.Entidades.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.Entidades.pdb
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.AssemblyReference.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.GeneratedMSBuildEditorConfig.editorconfig
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.AssemblyInfoInputs.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.AssemblyInfo.cs
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.CoreCompileInputs.cache
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.CopyComplete
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\refint\CuestionariosOIJ.ReglasNegocio.dll
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
+D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\ref\CuestionariosOIJ.ReglasNegocio.dll
