@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {}
+    "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {}
   },
   "projects": {
-    "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj": {
+    "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+        "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
         "projectName": "CuestionariosOIJ.AccesoDatos",
-        "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
-        "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-        "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
+        "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+        "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -81,17 +81,17 @@
         }
       }
     },
-    "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
+    "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
         "projectName": "CuestionariosOIJ.Entidades",
-        "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
-        "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-        "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\obj\\",
+        "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
+        "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -136,17 +136,17 @@
         }
       }
     },
-    "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {
+    "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
         "projectName": "CuestionariosOIJ.ReglasNegocio",
-        "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
-        "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-        "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\obj\\",
+        "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
+        "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -160,11 +160,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj": {
-                "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj"
+              "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj": {
+                "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj"
               },
-              "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
-                "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj"
+              "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
+                "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj"
               }
             }
           }

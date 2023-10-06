@@ -2014,19 +2014,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Brayan Vargas\\.nuget\\packages\\": {}
+    "C:\\Users\\losre\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
       "projectName": "CuestionariosOIJ.AccesoDatos",
-      "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
-      "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-      "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
+      "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

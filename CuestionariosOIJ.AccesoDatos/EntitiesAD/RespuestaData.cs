@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 {
-    internal class RespuestaData
+    public class RespuestaData
     {
         private readonly CuestionariosContext _db;
 
@@ -63,6 +63,10 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return _db.Respuesta.
                 Where(aux => aux.Pregunta.Equals(pregunta)).
                 ToList();
+        }
+
+        public RespuestaEF ObtenerPorId(int id) {
+            return _db.Respuesta.Find(id);
         }
     }
 }

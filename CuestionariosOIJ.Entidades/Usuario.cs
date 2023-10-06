@@ -8,6 +8,7 @@ namespace Cuestionarios.Domain
 {
     public class Usuario
     {
+        private int _id;
         private string 
             _nombreUsuario, 
             _contrasenna,
@@ -17,6 +18,7 @@ namespace Cuestionarios.Domain
             _correo,
             _oficinaDesignada;
 
+        public int Id { get => _id; set => _id = value; }
         public string NombreUsuario { get => _nombreUsuario; set => _nombreUsuario = value; }
         public string Contrasenna { get => _contrasenna; set => _contrasenna = value; }
         public string Nombre { get => _nombre; set => _nombre = value; }
@@ -27,8 +29,9 @@ namespace Cuestionarios.Domain
 
 
 
-        public Usuario(string nombreUsuario, string contrasenna, string nombre, string primerApellido, string segundoApellido, string correo, string oficinaDesignada)
+        public Usuario(int id,string nombreUsuario, string contrasenna, string nombre, string primerApellido, string segundoApellido, string correo, string oficinaDesignada)
         {
+            Id = id;
             NombreUsuario = nombreUsuario;
             Contrasenna = contrasenna;
             Nombre = nombre;
@@ -40,6 +43,7 @@ namespace Cuestionarios.Domain
 
         public Usuario()
         {
+            Id = 0;
             NombreUsuario = string.Empty;
             Contrasenna = string.Empty;
             Nombre = string.Empty;

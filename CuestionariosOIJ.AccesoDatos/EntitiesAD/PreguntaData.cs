@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 {
-    internal class PreguntaData
+    public class PreguntaData
     {
         private readonly CuestionariosContext _db;
 
