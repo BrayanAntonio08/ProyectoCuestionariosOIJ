@@ -32,3 +32,20 @@ D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\Proyecto
 D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\refint\CuestionariosOIJ.ReglasNegocio.dll
 D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
 D:\Universidad\2023 - II Ciclo\Análisis y diseño\Entregables\Proyecto\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\ref\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.deps.json
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.dll
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.Entidades.dll
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.AccesoDatos.pdb
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\bin\Debug\net6.0\CuestionariosOIJ.Entidades.pdb
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.AssemblyReference.cache
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.AssemblyInfoInputs.cache
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.AssemblyInfo.cs
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.CoreCompileInputs.cache
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.csproj.CopyComplete
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\refint\CuestionariosOIJ.ReglasNegocio.dll
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\CuestionariosOIJ.ReglasNegocio.pdb
+C:\Users\drey0\Source\Repos\ProyectoCuestionariosOIJ\CuestionariosOIJ.ReglasNegocio\obj\Debug\net6.0\ref\CuestionariosOIJ.ReglasNegocio.dll

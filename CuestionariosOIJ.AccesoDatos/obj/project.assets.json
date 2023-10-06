@@ -2014,19 +2014,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Brayan Vargas\\.nuget\\packages\\": {}
+    "C:\\Users\\drey0\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "projectUniqueName": "C:\\Users\\drey0\\Source\\Repos\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
       "projectName": "CuestionariosOIJ.AccesoDatos",
-      "projectPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
-      "packagesPath": "C:\\Users\\Brayan Vargas\\.nuget\\packages\\",
-      "outputPath": "D:\\Universidad\\2023 - II Ciclo\\Análisis y diseño\\Entregables\\Proyecto\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
+      "projectPath": "C:\\Users\\drey0\\Source\\Repos\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "packagesPath": "C:\\Users\\drey0\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\drey0\\Source\\Repos\\ProyectoCuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Brayan Vargas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\drey0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
