@@ -88,5 +88,24 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             return null;
         }
+
+        public Categoria ObtenerPorNombre(string nombre)
+        {
+            CategoriaEF result = _data.ObtenerCategoriaPorNombre(nombre);
+
+            if (result != null)
+            {
+                Categoria respuesta = new Categoria()
+                {
+                    Id = result.Id,
+                    Nombre = result.Nombre,
+                    Descripcion = result.Descripcion == null ? "" : result.Descripcion.ToString()
+                };
+
+                return respuesta;
+            }
+
+            return null;
+        }
     }
 }

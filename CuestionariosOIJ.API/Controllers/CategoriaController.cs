@@ -26,11 +26,20 @@ namespace CuestionariosOIJ.API.Controllers
             business.InsertarCategoria(categoria);
 
             // Devolver una respuesta exitosa
-            return await Task.FromResult(Ok(categoria));
+            return await Task.FromResult(Ok(business.ObtenerPorNombre(categoria.Nombre)));
         }
 
         [HttpGet(Name = "ListarCategorias")]
         public async Task<ActionResult<List<Categoria>>> ListarCategorias()
+        {
+            CategoriaRN business = new CategoriaRN();
+            List<Categoria> categorias = business.ListarCategorias();
+
+            return await Task.FromResult(Ok(categorias));
+        }
+
+        [HttpGet(Name = "ListarCategorias")]
+        public async Task<ActionResult<List<Categoria>>> ObtenerCategoriaPorID(int id)
         {
             CategoriaRN business = new CategoriaRN();
             List<Categoria> categorias = business.ListarCategorias();
