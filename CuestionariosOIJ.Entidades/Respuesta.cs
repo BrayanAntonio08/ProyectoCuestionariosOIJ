@@ -13,7 +13,7 @@ namespace Cuestionarios.Domain
         private List<OpcionRespuesta> _opcionesEscogidas;
         private Pregunta _preguntaRespondida;
         private Usuario _encuestado;
-        private DateTime _periodo;
+        private DateTime? _periodo;
 
         public Respuesta() { }
 
@@ -31,6 +31,6 @@ namespace Cuestionarios.Domain
         public Pregunta PreguntaRespondida { get => _preguntaRespondida; set => _preguntaRespondida = value; }
         public int Id { get => _id; set => _id = value; }
         public Usuario Encuestado { get => _encuestado; set => _encuestado = value; }
-        public DateTime Periodo { get => _periodo; set => _periodo = value; }
+        public DateTime? Periodo { get => _periodo; set => _periodo = value; }
     }
 }

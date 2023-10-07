@@ -13,8 +13,20 @@ namespace Cuestionarios.Domain
         private string _descripcion;
         private Categoria _categoria;
 
+        public Subcategoria()
+        {
+        }
+
         public Subcategoria(string nombre, string descripcion, Categoria categoria)
         {
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Categoria = categoria;
+        }
+
+        public Subcategoria(int id, string nombre, string descripcion, Categoria categoria)
+        {
+            Id= id;
             Nombre = nombre;
             Descripcion = descripcion;
             Categoria = categoria;
