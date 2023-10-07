@@ -38,7 +38,7 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                 optionsBuilder.UseSqlServer(
                     "workstation id=DataBaseCuestionarios.mssql.somee.com; "+
                     "user id=BrayanVafer_SQLLogin_1; pwd=k6f8dobsfa; "+
-                    "data source=DataBaseCuestionarios.mssql.somee.com; "
+                    "data source=DataBaseCuestionarios.mssql.somee.com; "+
                     "persist security info=False; "+
                     "initial catalog=DataBaseCuestionarios;");
             }
