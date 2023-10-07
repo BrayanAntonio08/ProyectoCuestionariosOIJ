@@ -1,16 +1,91 @@
+#api bin
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.API.pdb
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.dll
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.pdb
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.Entidades.pdb
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.dll
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.pdb
+
+
+#api obj
 CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.GeneratedMSBuildEditorConfig.editorconfig
 CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.assets.cache
 CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.csproj.AssemblyReference.cache
+CuestionariosOIJ.API/obj/CuestionariosOIJ.API.csproj.nuget.dgspec.json
+CuestionariosOIJ.API/obj/CuestionariosOIJ.API.csproj.nuget.g.props
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.MvcApplicationPartsAssemblyInfo.cs
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.csproj.CoreCompileInputs.cache
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.csproj.FileListAbsolute.txt
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.dll
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.genruntimeconfig.cache
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.pdb
+CuestionariosOIJ.API/obj/project.assets.json
+CuestionariosOIJ.API/obj/project.nuget.cache
 
+
+# acceso a datos bin
+CuestionariosOIJ.AccesoDatos/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.dll
+CuestionariosOIJ.AccesoDatos/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.pdb
+CuestionariosOIJ.AccesoDatos/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.dll
+CuestionariosOIJ.AccesoDatos/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.pdb
+
+
+#acceso a datos obj
 CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
 CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.assets.cache
 CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.csproj.AssemblyReference.cache
+CuestionariosOIJ.AccesoDatos/obj/CuestionariosOIJ.AccesoDatos.csproj.nuget.dgspec.json
+CuestionariosOIJ.AccesoDatos/obj/CuestionariosOIJ.AccesoDatos.csproj.nuget.g.props
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.csproj.CoreCompileInputs.cache
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.csproj.FileListAbsolute.txt
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.dll
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.genruntimeconfig.cache
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.pdb
+CuestionariosOIJ.AccesoDatos/obj/project.assets.json
+CuestionariosOIJ.AccesoDatos/obj/project.nuget.cache
 
+#entidades obj
 CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.GeneratedMSBuildEditorConfig.editorconfig
 CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.assets.cache
+CuestionariosOIJ.Entidades/obj/CuestionariosOIJ.Entidades.csproj.nuget.dgspec.json
+CuestionariosOIJ.Entidades/obj/CuestionariosOIJ.Entidades.csproj.nuget.g.props
+CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.csproj.FileListAbsolute.txt
+CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.dll
+CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.pdb
+CuestionariosOIJ.Entidades/obj/project.assets.json
+CuestionariosOIJ.Entidades/obj/project.nuget.cache
 
+
+#entidades bin
+CuestionariosOIJ.Entidades/bin/Debug/net6.0/CuestionariosOIJ.Entidades.dll
+CuestionariosOIJ.Entidades/bin/Debug/net6.0/CuestionariosOIJ.Entidades.pdb
+
+#reglas de negocio bin
+CuestionariosOIJ.ReglasNegocio/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.dll
+CuestionariosOIJ.ReglasNegocio/bin/Debug/net6.0/CuestionariosOIJ.AccesoDatos.pdb
+CuestionariosOIJ.ReglasNegocio/bin/Debug/net6.0/CuestionariosOIJ.Entidades.dll
+CuestionariosOIJ.ReglasNegocio/bin/Debug/net6.0/CuestionariosOIJ.Entidades.pdb
+CuestionariosOIJ.ReglasNegocio/bin/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.dll
+CuestionariosOIJ.ReglasNegocio/bin/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.pdb
+
+
+
+#reglas de negocio obj
 CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.GeneratedMSBuildEditorConfig.editorconfig
 CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.assets.cache
 CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.csproj.AssemblyReference.cache
+CuestionariosOIJ.ReglasNegocio/obj/CuestionariosOIJ.ReglasNegocio.csproj.nuget.dgspec.json
+CuestionariosOIJ.ReglasNegocio/obj/CuestionariosOIJ.ReglasNegocio.csproj.nuget.g.props
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.csproj.CoreCompileInputs.cache
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.csproj.FileListAbsolute.txt
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.dll
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.pdb
+CuestionariosOIJ.ReglasNegocio/obj/project.assets.json
+CuestionariosOIJ.ReglasNegocio/obj/project.nuget.cache
 
 .vs/
+
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.API.dll
+
+CuestionariosOIJ.API/bin/Debug/net6.0/CuestionariosOIJ.Entidades.dll
+
