@@ -1,0 +1,16 @@
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.GeneratedMSBuildEditorConfig.editorconfig
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.assets.cache
+CuestionariosOIJ.API/obj/Debug/net6.0/CuestionariosOIJ.API.csproj.AssemblyReference.cache
+
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.GeneratedMSBuildEditorConfig.editorconfig
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.assets.cache
+CuestionariosOIJ.AccesoDatos/obj/Debug/net6.0/CuestionariosOIJ.AccesoDatos.csproj.AssemblyReference.cache
+
+CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.GeneratedMSBuildEditorConfig.editorconfig
+CuestionariosOIJ.Entidades/obj/Debug/net6.0/CuestionariosOIJ.Entidades.assets.cache
+
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.GeneratedMSBuildEditorConfig.editorconfig
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.assets.cache
+CuestionariosOIJ.ReglasNegocio/obj/Debug/net6.0/CuestionariosOIJ.ReglasNegocio.csproj.AssemblyReference.cache
+
+.vs/
