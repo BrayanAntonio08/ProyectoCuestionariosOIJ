@@ -37,7 +37,7 @@ namespace CuestionariosOIJ.API.Controllers
         }
 
         [HttpPut(Name = "ActualizarCuestionario")]
-        public async Task<ActionResult<Categoria>> ActualizarCategoria([FromBody] Cuestionario cuestionario)
+        public async Task<ActionResult<Cuestionario>> ActualizarCuestionario([FromBody] Cuestionario cuestionario)
         {
             // Validar los datos recibidos
             if (cuestionario == null || cuestionario.Nombre == null)
