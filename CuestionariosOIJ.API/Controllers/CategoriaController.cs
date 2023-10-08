@@ -26,7 +26,7 @@ namespace CuestionariosOIJ.API.Controllers
             business.InsertarCategoria(categoria);
 
             // Devolver una respuesta exitosa
-            return await Task.FromResult(Ok(categoria));
+            return await Task.FromResult(Ok(business.ObtenerPorNombre(categoria.Nombre)));
         }
 
         [HttpGet(Name = "ListarCategorias")]
@@ -37,6 +37,16 @@ namespace CuestionariosOIJ.API.Controllers
 
             return await Task.FromResult(Ok(categorias));
         }
+
+        //[HttpGet(Name = "ListarCategoriasID")]
+        //[Route("api/CategoriaID")]
+        //public async Task<ActionResult<List<Categoria>>> ObtenerCategoriaPorID(int id)
+        //{
+        //    CategoriaRN business = new CategoriaRN();
+        //    List<Categoria> categoriasid = business.ListarCategorias();
+
+        //    return await Task.FromResult(Ok(categoriasid));
+        //}
 
         [HttpPut(Name = "ActualizarCategoria")]
         public async Task<ActionResult<Categoria>> ActualizarCategoria([FromBody] Categoria categoria)

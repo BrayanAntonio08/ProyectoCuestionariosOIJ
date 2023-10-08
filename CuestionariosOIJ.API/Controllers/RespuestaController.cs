@@ -72,6 +72,13 @@ namespace CuestionariosOIJ.API.Controllers
 
             return await Task.FromResult(Ok()); ;
         }
+        [HttpDelete(Name = "EliminarRespuesta")]
+        public async Task<ActionResult> EliminarRespuesta([FromBody] Respuesta respuesta)
+        {
+            BorradoRespuestaRN business = new BorradoRespuestaRN();
+            business.EliminarRespuesta(respuesta);
 
+            return await Task.FromResult(Ok()); ;
+        }
     }
 }

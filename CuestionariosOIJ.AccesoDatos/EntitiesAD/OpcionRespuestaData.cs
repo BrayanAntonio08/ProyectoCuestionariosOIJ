@@ -3,6 +3,7 @@ using CuestionariosOIJ.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,8 +20,15 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public void Insertar(OpcionRespuestaEF opcionRespuesta)
         {
-            _db.OpcionRespuesta.Add(opcionRespuesta);
-            _db.SaveChanges();
+            OpcionRespuestaEF exist = _db.OpcionRespuesta.
+                Where(x => 
+                    x.TextoOpcion.Equals(opcionRespuesta.TextoOpcion) 
+                    && x.PreguntaId == opcionRespuesta.PreguntaId).First();
+            if (exist == null)
+            {
+                _db.OpcionRespuesta.Add(opcionRespuesta);
+                _db.SaveChanges();
+            }
         }
 
         public void Actualizar(OpcionRespuestaEF opcionRespuesta)
