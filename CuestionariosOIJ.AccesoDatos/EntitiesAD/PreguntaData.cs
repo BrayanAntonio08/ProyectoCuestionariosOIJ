@@ -54,5 +54,10 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
                     && aux.Posicion == posicion).
                 First();
         }
+
+        public int BuscarTipoPreguntaPorNombre(string nombre)
+        {
+            return _db.TipoPregunta.Where(x => x.Nombre.Equals(nombre)).First().Id;
+        }
     }
 }
