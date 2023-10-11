@@ -70,7 +70,7 @@ namespace CuestionariosOIJ.API.Controllers
             CategoriaRN business = new CategoriaRN();
             business.EliminarCategoria(categoria);
 
-            return await Task.FromResult(Ok()); ;
+            return await Task.FromResult(Ok(categoria)); ;
         }
     }
 }

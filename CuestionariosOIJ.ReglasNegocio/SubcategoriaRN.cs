@@ -54,6 +54,7 @@ namespace CuestionariosOIJ.ReglasNegocio
         {
             List<Subcategoria> resultado = new List<Subcategoria>();
             List<SubcategoriaEF> itemsGuardados = _data.ListarSubcategorias();
+            CategoriaRN categoriaRN = new CategoriaRN();
             foreach (var item in itemsGuardados)
             {
                 resultado.Add(
@@ -62,7 +63,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Id,
                         Nombre = item.Nombre,
                         Descripcion = item.Descripcion,
-                        Categoria = new CategoriaRN().ObtenerPorID(item.Categoria.Id)
+                        Categoria = categoriaRN.ObtenerPorID(item.CategoriaId)
                     }
                     );
             }
