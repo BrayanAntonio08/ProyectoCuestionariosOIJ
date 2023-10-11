@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "asPRvL/vl+J1d1wbmvnrlSXDRpbczUUY7Ni910J0/aqxflRizEA8jha5++9bSOEbCRK9qvo2fo2duVAMAx9luQ==",
+  "dgSpecHash": "rTFpTGlez9b91CUaycLq8ikTcuJHBvaMQxpl9noIzKdByD9GyNN0YQtOnqsGMU5jFkJHlZMrR7e6YpB5Popz0A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
+  "projectFilePath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\losre\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\losre\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

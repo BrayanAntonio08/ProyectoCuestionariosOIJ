@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8xBnwSze5oSl2NoMgt7efRQb1BIhvmMzyuFr85xA9eMwqCRU6pk/YTAs8wM6o9MPrrAb9Vwg6gIhT5JB+W4U4A==",
+  "dgSpecHash": "xseZTOx5fIHZLqkogo41Q9T1riNBbqEt5ZrfRBvi2X7BmfZZV7ZO6yRQ1JyVarW+R4x7vvakntgiEcbtEHvgXg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
+  "projectFilePath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\losre\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\losre\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

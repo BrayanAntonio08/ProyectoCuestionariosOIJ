@@ -2019,11 +2019,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
       "projectName": "CuestionariosOIJ.AccesoDatos",
-      "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
+      "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.AccesoDatos\\CuestionariosOIJ.AccesoDatos.csproj",
       "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.AccesoDatos\\obj\\",
+      "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.AccesoDatos\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",

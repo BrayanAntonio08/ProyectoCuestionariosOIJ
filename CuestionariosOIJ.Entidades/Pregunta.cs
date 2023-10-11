@@ -14,12 +14,13 @@ namespace Cuestionarios.Domain
         private string _etiqueta, _contenidoPregunta, _tipoRespuesta;
         private bool _justificacion, _obligatoria;
         private List<OpcionRespuesta> _opciones;
+        private Cuestionario _cuestionario;
 
         public Pregunta()
         {
         }
 
-        public Pregunta(int id, string etiqueta, string contenidoPregunta, string tipoRespuesta, bool justificacion, bool obligatoria, Categoria categoria, Subcategoria subcategoria, List<OpcionRespuesta> opciones)
+        public Pregunta(int id, string etiqueta, string contenidoPregunta, string tipoRespuesta, bool justificacion, bool obligatoria, Categoria categoria, Subcategoria subcategoria, List<OpcionRespuesta> opciones, Cuestionario cuestionario)
         {
             Id = id;
             Etiqueta = etiqueta;
@@ -30,6 +31,7 @@ namespace Cuestionarios.Domain
             Categoria = categoria;
             Subcategoria = subcategoria;
             Opciones = opciones;
+            Cuestionario = cuestionario;
         }
 
 
@@ -41,6 +43,7 @@ namespace Cuestionarios.Domain
         public Categoria Categoria { get => _categoria; set => _categoria = value; }
         public Subcategoria Subcategoria { get => _subcategoria; set => _subcategoria = value; }
         public List<OpcionRespuesta> Opciones { get => _opciones; set => _opciones = value; }
+        public Cuestionario Cuestionario { get => _cuestionario; set => _cuestionario = value; }
         public int Id { get => _id; set => _id = value; }
         public int Posicion { get => _posicion; set => _posicion = value; }
     }

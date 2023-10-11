@@ -18,7 +18,7 @@ namespace CuestionariosOIJ.API.Controllers
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
 
-            // Guardar la categoria
+            // Guardar la subcategoria
             SubcategoriaRN business = new SubcategoriaRN();
             business.InsertarCategoria(subcategoria);
 
@@ -44,7 +44,7 @@ namespace CuestionariosOIJ.API.Controllers
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
 
-            // Guardar la categoria
+            // Guardar la subcategoria
             SubcategoriaRN business = new SubcategoriaRN();
             business.ActualizarSubcategoria(subcategoria);
 

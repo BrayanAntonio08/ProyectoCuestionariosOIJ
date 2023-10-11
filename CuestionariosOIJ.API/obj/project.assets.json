@@ -2500,11 +2500,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
+      "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
       "projectName": "CuestionariosOIJ.API",
-      "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
+      "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.API\\CuestionariosOIJ.API.csproj",
       "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.API\\obj\\",
+      "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2521,11 +2521,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
-              "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj"
+            "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
+              "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj"
             },
-            "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {
-              "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj"
+            "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj": {
+              "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.ReglasNegocio\\CuestionariosOIJ.ReglasNegocio.csproj"
             }
           }
         }

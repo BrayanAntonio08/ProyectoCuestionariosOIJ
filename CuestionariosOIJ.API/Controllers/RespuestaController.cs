@@ -20,7 +20,7 @@ namespace CuestionariosOIJ.API.Controllers
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
 
-            // Guardar la categoria
+            // Guardar la respuesta
             RespuestaRN business = new RespuestaRN();
             business.InsertarRespuesta(respuesta);
 
@@ -66,7 +66,7 @@ namespace CuestionariosOIJ.API.Controllers
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
 
-            // Guardar la categoria
+            // Guardar la respuesta
             RespuestaRN business = new RespuestaRN();
             business.BorrarRespuestasCuestionario(cuestionario);
 

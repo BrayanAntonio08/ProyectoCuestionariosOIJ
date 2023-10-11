@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {}
+    "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {}
   },
   "projects": {
-    "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
+    "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
         "projectName": "CuestionariosOIJ.Entidades",
-        "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
+        "projectPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\CuestionariosOIJ.Entidades.csproj",
         "packagesPath": "C:\\Users\\losre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\CuestionariosOIJ\\CuestionariosOIJ.Entidades\\obj\\",
+        "outputPath": "C:\\Users\\losre\\OneDrive\\Escritorio\\VCu\\CuestionariosOIJ.Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\losre\\AppData\\Roaming\\NuGet\\NuGet.Config",
