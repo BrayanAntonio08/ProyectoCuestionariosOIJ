@@ -19,7 +19,7 @@ namespace CuestionariosOIJ.API.Controllers
             }
 
             // IniciarSesion la categoria
-            IngresoUsuario business = new IngresoUsuario();
+            UsuarioRN business = new UsuarioRN();
             business.iniciarSesion(usuario);
 
             // Devolver una respuesta exitosa

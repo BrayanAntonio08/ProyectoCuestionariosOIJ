@@ -71,6 +71,13 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         }
 
+        public void InsertarRevisador(CuestionarioEF cuestionario, string nombreusuario)
+        {
+            UsuarioEF usuario = _db.Usuarios.Where(user => user.NombreUsuario.Equals(nombreusuario)).First();
+            _db.Cuestionarios.Find(cuestionario.Id).Revisadores.Add(usuario);
+            _db.SaveChanges();
+        }
+
         public OficinaEF leerOficina(string nombreOficina)
         {
             return _db.Oficinas.Where(x => x.Nombre == nombreOficina).First();
@@ -105,7 +112,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public CuestionarioEF ObtenerPorCodigo(string codigo)
         {
-            return _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo).First();
+            return _db.Cuestionarios.Where(cuest => cuest.Codigo.Equals(codigo)).First();
         }
 
         public List<CuestionarioEF> ListarPorTipo(string tipo)

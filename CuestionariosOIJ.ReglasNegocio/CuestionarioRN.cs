@@ -54,6 +54,13 @@ namespace CuestionariosOIJ.ReglasNegocio
             };
 
             _data.InsertarCuestionario(nuevoItem);
+
+            CuestionarioEF resultado = _data.ObtenerPorCodigo(codigo);
+
+            foreach(Usuario revisador in cuestionario.Revisadores)
+            {
+                _data.InsertarRevisador(resultado, revisador.NombreUsuario);
+            }
         }
 
         public void ActualizarCuestionario(Cuestionario cuestionario)
@@ -99,7 +106,9 @@ namespace CuestionariosOIJ.ReglasNegocio
                         FechaCreacion = cuestionario.FechaCreacion,
                         Vencimiento = cuestionario.FechaVencimiento,
                         Oficina = _data.ObtenerOficina(cuestionario.OficinaId),
-                        Tipo = _data.ObtenerTipo(cuestionario.TipoCuestionarioId)
+                        Tipo = _data.ObtenerTipo(cuestionario.TipoCuestionarioId),
+                        Revisadores = new UsuarioRN().ListarUsuariosRevisadores(cuestionario.Id)
+
                     }
                     );
             }

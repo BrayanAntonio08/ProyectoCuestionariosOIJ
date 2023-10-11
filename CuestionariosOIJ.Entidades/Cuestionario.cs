@@ -41,7 +41,7 @@ namespace Cuestionarios.Domain
         public bool Activo { get => _activo; set => _activo = value; }
         public DateTime Vencimiento { get => _vencimiento; set => _vencimiento = value; }
         public DateTime FechaCreacion { get => _fechaCreacion; set => _fechaCreacion = value; }
-        internal List<Pregunta> Preguntas { get => _preguntas; set => _preguntas = value; }
-        internal List<Usuario> Revisadores { get => _revisadores; set => _revisadores = value; }
+        public List<Pregunta> Preguntas { get => _preguntas; set => _preguntas = value; }
+        public List<Usuario> Revisadores { get => _revisadores; set => _revisadores = value; }
     }
 }
