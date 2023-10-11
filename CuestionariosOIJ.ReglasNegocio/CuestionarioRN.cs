@@ -34,19 +34,26 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             return codigo;
         }
+
         public void InsertarCuestionario(Cuestionario cuestionario)
         {
+            string codigo = GenerarCodigo();
+            while (_data.ExisteCodigo(codigo))
+            {
+                codigo = GenerarCodigo();
+            }
             CuestionarioEF nuevoItem = new CuestionarioEF()
             {
-                Codigo = GenerarCodigo(),
-                Nombre = cuestionario.Descripcion,
+                Codigo = codigo,
+                Nombre = cuestionario.Nombre,
                 Descripcion = cuestionario.Descripcion,
                 Activo = cuestionario.Activo,
-                FechaCreacion = DateTime.Now,
                 FechaVencimiento = cuestionario.Vencimiento,
+                OficinaId = _data.leerOficina(cuestionario.Oficina).Id,
+                TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id  
             };
 
-            _data.Insertar(nuevoItem);
+            _data.InsertarCuestionario(nuevoItem);
         }
 
         public void ActualizarCuestionario(Cuestionario cuestionario)
@@ -85,12 +92,14 @@ namespace CuestionariosOIJ.ReglasNegocio
                     new Cuestionario()
                     {
                         Id = cuestionario.Id,
-                        Codigo = cuestionario.Nombre,
+                        Codigo = cuestionario.Codigo,
                         Nombre = cuestionario.Nombre,
                         Descripcion = cuestionario.Descripcion,
                         Activo = cuestionario.Activo,
-                        FechaCreacion = DateTime.Now,
+                        FechaCreacion = cuestionario.FechaCreacion,
                         Vencimiento = cuestionario.FechaVencimiento,
+                        Oficina = _data.ObtenerOficina(cuestionario.OficinaId),
+                        Tipo = _data.ObtenerTipo(cuestionario.TipoCuestionarioId)
                     }
                     );
             }
