@@ -96,7 +96,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public void Eliminar(CuestionarioEF cuestionario)
         {
-            _db.Cuestionarios.Remove(cuestionario);
+            _db.Cuestionarios.Find(cuestionario.Id).Eliminado = true;
             _db.SaveChanges();
         }
 
