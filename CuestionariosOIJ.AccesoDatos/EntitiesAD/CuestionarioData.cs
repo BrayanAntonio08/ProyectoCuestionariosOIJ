@@ -1,7 +1,10 @@
-﻿using CuestionariosOIJ.AccesoDatos.Context;
+﻿
+using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.API.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +14,78 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
     public class CuestionarioData
     {
         private readonly CuestionariosContext _db;
+        private DataBaseManager _dbManager;
+
+        internal DataBaseManager DbManager { get => _dbManager; set => _dbManager = value; }
 
         public CuestionarioData(CuestionariosContext context)
         {
             _db = context;
+            _dbManager = new DataBaseManager();
         }
 
-        public void Insertar(CuestionarioEF cuestionario)
+        public bool ExisteCodigo(string codigo)
         {
-            _db.Cuestionarios.Add(cuestionario);
+            return _db.Cuestionarios.Where(x => x.Codigo.Equals(codigo)).Count() > 0;
+        }
+
+        public string ObtenerTipo(int tipoId)
+        {
+            return _db.TipoCuestionarios.Where(tipo => tipo.Id == tipoId).First().Nombre;
+        }
+
+        public string ObtenerOficina(int oficinaId)
+        {
+            return _db.Oficinas.Where(tipo => tipo.Id == oficinaId).First().Nombre;
+        }
+
+        public void InsertarCuestionario(CuestionarioEF cuestionario)
+        {
+            //Crear el gestor y establecer informacion de control
+            this.DbManager = new DataBaseManager()
+            {
+                DbName = "db_cuestionarios",
+                SpName = "sp_InsertarCuestionario",
+                Scalar = true,
+                Response = false,
+                TableName = ""
+            };
+
+            //definir parametros
+            this.DbManager.addParameter("@Codigo", "varchar", cuestionario.Codigo);
+            this.DbManager.addParameter("@Nombre", "varchar", cuestionario.Nombre);
+            this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
+            this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
+            this.DbManager.addParameter("@OficinaID", "int", cuestionario.OficinaId);
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
+            this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
+
+
+            //Ejercutar el procedimiento en la base de datos
+            DbManager.ExecuteQuery(ref _dbManager);
+
+            if (DbManager.ErrorMessage.Length > 0)
+            {
+                throw new Exception(DbManager.ErrorMessage);
+            }
+
+        }
+
+        public void InsertarRevisador(CuestionarioEF cuestionario, string nombreusuario)
+        {
+            UsuarioEF usuario = _db.Usuarios.Where(user => user.NombreUsuario.Equals(nombreusuario)).First();
+            _db.Cuestionarios.Find(cuestionario.Id).Revisadores.Add(usuario);
             _db.SaveChanges();
+        }
+
+        public OficinaEF leerOficina(string nombreOficina)
+        {
+            return _db.Oficinas.Where(x => x.Nombre == nombreOficina).First();
+        }
+
+        public TipoCuestionarioEF leerTipo(string nombreTipo)
+        {
+           return _db.TipoCuestionarios.Where(x => x.Nombre == nombreTipo).First();
         }
 
         public void Actualizar(CuestionarioEF cuestionario)
@@ -47,7 +112,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public CuestionarioEF ObtenerPorCodigo(string codigo)
         {
-            return _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo).First();
+            return _db.Cuestionarios.Where(cuest => cuest.Codigo.Equals(codigo)).First();
         }
 
         public List<CuestionarioEF> ListarPorTipo(string tipo)

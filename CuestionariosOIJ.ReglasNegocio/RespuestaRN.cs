@@ -56,10 +56,11 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.EliminarRespuesta(nuevoItem);
         }
 
-        public List<Respuesta> ListarRespuestasTotales(CuestionarioEF cuestionario)
+        public List<Respuesta> ListarRespuestasTotales(Cuestionario cuestionario)
         {
             List<Respuesta> resultado = new List<Respuesta>();
-            List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotales(cuestionario);
+            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
+            List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotales(cuestionarioEF);
             foreach (var item in itemsGuardados)
             {
                 resultado.Add(
@@ -83,10 +84,14 @@ namespace CuestionariosOIJ.ReglasNegocio
             return resultado;
         }
 
-        public List<Respuesta> ListarRespuestasPorPregunta(PreguntaEF pregunta)
+        public List<Respuesta> ListarRespuestasPorPregunta(Pregunta pregunta)
         {
             List<Respuesta> resultado = new List<Respuesta>();
-            List<RespuestaEF> itemsGuardados = _data.ListarRespuestasPorPregunta(pregunta);
+            PreguntaEF preguntaEF = new PreguntaEF()
+            {
+                Id= pregunta.Id
+            };
+            List<RespuestaEF> itemsGuardados = _data.ListarRespuestasPorPregunta(preguntaEF);
             foreach (var item in itemsGuardados)
             {
                 resultado.Add(
@@ -112,10 +117,14 @@ namespace CuestionariosOIJ.ReglasNegocio
             return resultado;
         }
 
-        public List<Respuesta> ListarRespuestasTotalesPorPregunta(PreguntaEF pregunta)
+        public List<Respuesta> ListarRespuestasTotalesPorPregunta(Pregunta pregunta)
         {
             List<Respuesta> resultado = new List<Respuesta>();
-            List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotalesPorPregunta(pregunta);
+            PreguntaEF preguntaEF = new PreguntaEF()
+            {
+                Id = pregunta.Id
+            };
+            List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotalesPorPregunta(preguntaEF);
             foreach (var item in itemsGuardados)
             {
                 resultado.Add(
