@@ -50,7 +50,8 @@ namespace CuestionariosOIJ.ReglasNegocio
                 Activo = cuestionario.Activo,
                 FechaVencimiento = cuestionario.Vencimiento,
                 OficinaId = _data.leerOficina(cuestionario.Oficina).Id,
-                TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id  
+                TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id,  
+                Eliminado = false
             };
 
             _data.InsertarCuestionario(nuevoItem);
@@ -93,7 +94,7 @@ namespace CuestionariosOIJ.ReglasNegocio
         {
             List<Cuestionario> resultado = new List<Cuestionario>();
             List<CuestionarioEF> itemsGuardados = _data.Listar();
-            foreach (var cuestionario in itemsGuardados)
+            foreach (var cuestionario in itemsGuardados.Where(x => x.Eliminado == false))
             {
                 resultado.Add(
                     new Cuestionario()

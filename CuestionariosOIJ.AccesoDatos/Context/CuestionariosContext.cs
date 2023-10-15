@@ -84,6 +84,10 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
                 entity.Property(e => e.FechaVencimiento).HasColumnType("datetime");
 
+                entity.Property(e => e.Eliminado)
+                    .HasColumnName("Eliminado")
+                    .HasColumnType("bit");
+
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(200)
                     .IsUnicode(false);

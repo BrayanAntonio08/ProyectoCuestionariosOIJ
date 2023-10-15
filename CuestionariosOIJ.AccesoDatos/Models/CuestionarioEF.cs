@@ -16,6 +16,7 @@ namespace CuestionariosOIJ.API.Models
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public bool Activo { get; set; }
+        public bool Eliminado { get; set; }
         public DateTime FechaVencimiento { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
