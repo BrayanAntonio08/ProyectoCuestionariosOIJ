@@ -45,7 +45,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager = new DataBaseManager()
             {
                 DbName = "db_cuestionarios",
-                SpName = "sp_InsertarCuestionario",
+                SpName = "sp_insertar_cuestionario",
                 Scalar = true,
                 Response = false,
                 TableName = ""
@@ -88,10 +88,36 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
            return _db.TipoCuestionarios.Where(x => x.Nombre == nombreTipo).First();
         }
 
-        public void Actualizar(CuestionarioEF cuestionario)
+        public void ActualizarCuestionario(CuestionarioEF cuestionario)
         {
-            _db.Cuestionarios.Update(cuestionario);
-            _db.SaveChanges();
+            //Crear el gestor y establecer informacion de control
+            this.DbManager = new DataBaseManager()
+            {
+                DbName = "db_cuestionarios",
+                SpName = "sp_actualizar_cuestionario",
+                Scalar = true,
+                Response = false,
+                TableName = ""
+            };
+
+            //definir parametros
+            this.DbManager.addParameter("@Id", "int", cuestionario.Id);
+            this.DbManager.addParameter("@Nombre", "varchar", cuestionario.Nombre);
+            this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
+            this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
+            this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
+            
+
+
+            //Ejercutar el procedimiento en la base de datos
+            DbManager.ExecuteQuery(ref _dbManager);
+
+            if (DbManager.ErrorMessage.Length > 0)
+            {
+                throw new Exception(DbManager.ErrorMessage);
+            }
+
         }
 
         public void Eliminar(CuestionarioEF cuestionario)
@@ -112,7 +138,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public CuestionarioEF ObtenerPorCodigo(string codigo)
         {
-            return _db.Cuestionarios.Where(cuest => cuest.Codigo.Equals(codigo)).First();
+            return _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo).First();
         }
 
         public List<CuestionarioEF> ListarPorTipo(string tipo)
