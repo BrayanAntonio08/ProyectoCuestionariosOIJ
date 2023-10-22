@@ -57,7 +57,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
             this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
             this.DbManager.addParameter("@OficinaID", "int", cuestionario.OficinaId);
-            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime((DateTime)cuestionario.FechaVencimiento));
             this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
 
 
@@ -90,8 +90,34 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public void Actualizar(CuestionarioEF cuestionario)
         {
-            _db.Cuestionarios.Update(cuestionario);
-            _db.SaveChanges();
+            //Crear el gestor y establecer informacion de control
+            this.DbManager = new DataBaseManager()
+            {
+                DbName = "db_cuestionarios",
+                SpName = "sp_actualizar_cuestionario",
+                Scalar = true,
+                Response = false,
+                TableName = ""
+            };
+
+            //definir parametros
+            this.DbManager.addParameter("@Id", "int", cuestionario.Id);
+            this.DbManager.addParameter("@Nombre", "varchar", cuestionario.Nombre);
+            this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
+            this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
+            this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
+            
+
+
+            //Ejercutar el procedimiento en la base de datos
+            DbManager.ExecuteQuery(ref _dbManager);
+
+            if (DbManager.ErrorMessage.Length > 0)
+            {
+                throw new Exception(DbManager.ErrorMessage);
+            }
+
         }
 
         public void Eliminar(CuestionarioEF cuestionario)
