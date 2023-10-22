@@ -43,10 +43,10 @@ namespace CuestionariosOIJ.API.Controllers
         }
 
         [HttpGet("ListarPreguntas")]
-        public async Task<ActionResult<List<Pregunta>>> ListarPreguntas([FromBody] Cuestionario cuestionario)
+        public async Task<ActionResult<List<Pregunta>>> ListarPreguntas(int cuestionarioID)
         {
             PreguntaRN business = new PreguntaRN();
-            List<Pregunta> preguntas = business.ListarPreguntas(cuestionario);
+            List<Pregunta> preguntas = business.ListarPreguntas(cuestionarioID);
 
             return await Task.FromResult(Ok(preguntas));
         }
@@ -70,7 +70,7 @@ namespace CuestionariosOIJ.API.Controllers
         }
 
         [HttpDelete(Name = "EliminarPregunta")]
-        public async Task<ActionResult> EliminarPregunta([FromBody] Pregunta pregunta)
+        public async Task<ActionResult> EliminarPregunta(int pregunta)
         {
             PreguntaRN business = new PreguntaRN();
             business.EliminarPregunta(pregunta);

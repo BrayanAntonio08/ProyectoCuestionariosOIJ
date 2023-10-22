@@ -36,6 +36,23 @@ namespace CuestionariosOIJ.API.Controllers
             return await Task.FromResult(Ok(cuestionarios));
         }
 
+        [HttpGet("/api/[controller]/{codigo}")]
+        public async Task<ActionResult<Cuestionario>> ObtenerCuestionarioCodigo(string codigo)
+        {
+            CuestionarioRN business = new CuestionarioRN();
+            // Aquí debes buscar el cuestionario con el código proporcionado
+
+            // Supongamos que obtienes el cuestionario
+            Cuestionario cuestionario = business.ObtenerCuestionarioPorCodigo(codigo);
+
+            if (cuestionario == null)
+            {
+                return NotFound(); // Puedes devolver un NotFound si no se encuentra el cuestionario.
+            }
+
+            return await Task.FromResult(Ok(cuestionario));
+        }
+
         [HttpPut(Name = "ActualizarCuestionario")]
         public async Task<ActionResult<Cuestionario>> ActualizarCuestionario([FromBody] Cuestionario cuestionario)
         {
@@ -58,7 +75,7 @@ namespace CuestionariosOIJ.API.Controllers
             CuestionarioRN business = new CuestionarioRN();
             business.EliminarCuestionario(cuestionario);
 
-            return await Task.FromResult(Ok()); ;
+            return await Task.FromResult(Ok(cuestionario)); ;
         }
     }
 }

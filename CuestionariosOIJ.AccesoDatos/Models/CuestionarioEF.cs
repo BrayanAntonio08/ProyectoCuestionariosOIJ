@@ -17,8 +17,8 @@ namespace CuestionariosOIJ.API.Models
         public string? Descripcion { get; set; }
         public bool Activo { get; set; }
         public bool Eliminado { get; set; }
-        public DateTime FechaVencimiento { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime? FechaVencimiento { get; set; }
+        public DateTime? FechaCreacion { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
         public int TipoCuestionarioId { get; set; }
         public int OficinaId { get; set; }

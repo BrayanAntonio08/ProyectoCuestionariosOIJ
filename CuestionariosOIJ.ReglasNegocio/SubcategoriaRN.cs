@@ -71,5 +71,16 @@ namespace CuestionariosOIJ.ReglasNegocio
             return resultado;
         }
 
+        public Subcategoria ObtenerPorID(int id)
+        {
+            SubcategoriaEF item = _data.ObtenerSubcategoriaPorID(id);
+            return new Subcategoria()
+                {
+                    Id = item.Id,
+                    Nombre = item.Nombre,
+                    Descripcion = item.Descripcion,
+                    Categoria = new CategoriaRN().ObtenerPorID(item.CategoriaId)
+                };
+        }
     }
 }

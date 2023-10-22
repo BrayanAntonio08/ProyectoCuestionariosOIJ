@@ -35,16 +35,21 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db.SaveChanges();
         }
 
-        public List<PreguntaEF> ListarPreguntas(CuestionarioEF cuestionario)
+        public List<PreguntaEF> ListarPreguntas(int cuestionarioId)
         {
             return _db.Pregunta.
-                Where(aux => aux.Cuestionario.Equals(cuestionario)).
+                Where(aux => aux.Cuestionario.Id == cuestionarioId).
                 ToList();
         }
 
         public PreguntaEF ObtenerPreguntaPorID(int id)
         {
-            return _db.Pregunta.Find(id);
+            PreguntaEF temp = _db.Pregunta.Find(id);
+            if(temp != null)
+            {
+                temp.TipoPregunta = _db.TipoPregunta.Find(id);
+            }
+            return temp;
         }
 
         public PreguntaEF ObtenerPreguntaEn(CuestionarioEF cuestionario, int posicion)
@@ -58,6 +63,17 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
         public int BuscarTipoPreguntaPorNombre(string nombre)
         {
             return _db.TipoPregunta.Where(x => x.Nombre.Equals(nombre)).First().Id;
+        }
+
+        public string consultarTipoPregunta(int id)
+        {
+            return _db.TipoPregunta.Find(id).Nombre;
+        }
+
+        public int ObtenerUltimaPosicion(int cuestionario)
+        {
+            int pos = _db.Pregunta.Where(aux => aux.CuestionarioId == cuestionario).Max(x => x.Posicion);
+            return pos+1;
         }
     }
 }
