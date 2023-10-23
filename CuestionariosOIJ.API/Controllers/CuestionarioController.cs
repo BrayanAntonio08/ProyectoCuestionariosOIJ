@@ -69,13 +69,13 @@ namespace CuestionariosOIJ.API.Controllers
             return await Task.FromResult(Ok(cuestionario));
         }
 
-        [HttpDelete(Name = "EliminarCuestionario")]
-        public async Task<ActionResult> EliminarCuestionario([FromBody] Cuestionario cuestionario)
+        [HttpDelete("/api/[controller]/{cuestionarioId}")]
+        public async Task<ActionResult> EliminarCuestionario(int cuestionarioId)
         {
             CuestionarioRN business = new CuestionarioRN();
-            business.EliminarCuestionario(cuestionario);
+            business.EliminarCuestionario(cuestionarioId);
 
-            return await Task.FromResult(Ok(cuestionario)); ;
+            return await Task.FromResult(Ok(cuestionarioId)); ;
         }
     }
 }

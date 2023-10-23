@@ -45,7 +45,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager = new DataBaseManager()
             {
                 DbName = "db_cuestionarios",
-                SpName = "sp_InsertarCuestionario",
+                SpName = "sp_insertar_cuestionario",
                 Scalar = true,
                 Response = false,
                 TableName = ""
@@ -106,7 +106,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
             this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
             this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
-            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime((DateTime)cuestionario.FechaVencimiento));
             
 
 

@@ -79,10 +79,11 @@ namespace CuestionariosOIJ.ReglasNegocio
             resultado.Etiqueta = item.Etiqueta;
             resultado.Obligatoria = item.Obligatoria;
             resultado.Subcategoria = new SubcategoriaRN().ObtenerPorID((int)item.SubcategoriaId);
-            resultado.TipoRespuesta = _data.consultarTipoPregunta(item.TipoPreguntaId);
+            resultado.TipoRespuesta = item.TipoPregunta.Nombre;
             resultado.ContenidoPregunta = item.TextoPregunta;
             resultado.Posicion = item.Posicion;
-            
+            resultado.Opciones = new OpcionRespuestaRN().ListarOpcionesRespuesta(item.Id);
+
             return resultado;
         }
 
@@ -90,7 +91,7 @@ namespace CuestionariosOIJ.ReglasNegocio
         {
 
             List<Pregunta> resultado = new List<Pregunta>();
-            List<PreguntaEF> itemsGuardados = _data.ListarPreguntas(cuestionarioID);
+            List<PreguntaEF> itemsGuardados = (List<PreguntaEF>)_data.ListarPreguntas(cuestionarioID);
             foreach (var item in itemsGuardados)
             {
                 resultado.Add(parsePregunta(item));
@@ -133,6 +134,19 @@ namespace CuestionariosOIJ.ReglasNegocio
             };
 
             return resultado;
+        }
+
+        public List<Pregunta> ListarPreguntasSeleccion(int cuestionario)
+        {
+            IEnumerable<PreguntaEF> list = _data.ListarPreguntasSeleccion(cuestionario);
+            List<Pregunta> preguntas = new List<Pregunta>();
+
+            foreach(PreguntaEF ef in list)
+            {
+                Pregunta factible = parsePregunta(ef);
+                preguntas.Add(factible);
+            }
+            return preguntas;
         }
     }
 }

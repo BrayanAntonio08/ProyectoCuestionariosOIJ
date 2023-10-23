@@ -18,17 +18,23 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db = context;
         }
 
-        public void Insertar(OpcionRespuestaEF opcionRespuesta)
+        public int Insertar(OpcionRespuestaEF opcionRespuesta)
         {
-            OpcionRespuestaEF exist = _db.OpcionRespuesta.
-                Where(x => 
-                    x.TextoOpcion.Equals(opcionRespuesta.TextoOpcion) 
-                    && x.PreguntaId == opcionRespuesta.PreguntaId).First();
-            if (exist == null)
+            IEnumerable<OpcionRespuestaEF> exist = _db.OpcionRespuesta.
+                Where(x =>
+                    x.TextoOpcion.Equals(opcionRespuesta.TextoOpcion)
+                    && x.PreguntaId == opcionRespuesta.PreguntaId);
+            if (exist.Count() == 0)
             {
                 _db.OpcionRespuesta.Add(opcionRespuesta);
                 _db.SaveChanges();
+
+                return _db.OpcionRespuesta.
+                Where(x =>
+                    x.TextoOpcion.Equals(opcionRespuesta.TextoOpcion)
+                    && x.PreguntaId == opcionRespuesta.PreguntaId).First().Id;
             }
+            return exist.First().Id;
         }
 
         public void Actualizar(OpcionRespuestaEF opcionRespuesta)
@@ -43,11 +49,16 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db.SaveChanges();
         }
 
-        public List<OpcionRespuestaEF> Listar(PreguntaEF pregunta)
+        public List<OpcionRespuestaEF> Listar(int preguntaId)
         {
             return _db.OpcionRespuesta.
-                Where(aux => aux.Pregunta.Equals(pregunta)).
+                Where(aux => aux.Pregunta.Id == preguntaId).
                 ToList();
+        }
+
+        public OpcionRespuestaEF ObtenerPorID(int id)
+        {
+            return _db.OpcionRespuesta.Find(id);
         }
     }
 }

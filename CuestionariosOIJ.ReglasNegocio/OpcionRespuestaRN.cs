@@ -20,23 +20,21 @@ namespace CuestionariosOIJ.ReglasNegocio
         }
 
 
-        public void InsertarOpcionRespuesta(Pregunta pregunta)
+        public int InsertarOpcionRespuesta(int preguntaId, OpcionRespuesta opcion)
         {
-            foreach(OpcionRespuesta opcion in pregunta.Opciones) { 
-                OpcionRespuestaEF nuevoItem = new OpcionRespuestaEF()
-                {
-                    PreguntaId = pregunta.Id,
-                    TextoOpcion = opcion.TextoOpcion,
-                };
 
-                _data.Insertar(nuevoItem);
-            }
+            OpcionRespuestaEF nuevoItem = new OpcionRespuestaEF()
+            {
+                PreguntaId = preguntaId,
+                TextoOpcion = opcion.TextoOpcion,
+            };
+
+            return _data.Insertar(nuevoItem);
         }
         
-        public List<OpcionRespuesta> ListarOpcionesRespuesta(Pregunta pregunta)
+        public List<OpcionRespuesta> ListarOpcionesRespuesta(int preguntaId)
         {
-            PreguntaEF origen = new PreguntaData(new CuestionariosContext()).ObtenerPreguntaPorID(pregunta.Id);
-            List<OpcionRespuestaEF> datos = _data.Listar(origen);
+            List<OpcionRespuestaEF> datos = _data.Listar(preguntaId);
 
             List<OpcionRespuesta> resultado = new List<OpcionRespuesta>();
             foreach(OpcionRespuestaEF objeto in  datos)
@@ -45,6 +43,12 @@ namespace CuestionariosOIJ.ReglasNegocio
             }
 
             return resultado;
+        }
+
+        public OpcionRespuesta ObtenerPorID(int id)
+        {
+            OpcionRespuestaEF temp = _data.ObtenerPorID(id);
+            return new OpcionRespuesta(temp.Id, temp.TextoOpcion);
         }
     }
 }

@@ -80,11 +80,11 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.Actualizar(nuevoItem);
         }
 
-        public void EliminarCuestionario(Cuestionario cuestionario)
+        public void EliminarCuestionario(int cuestionarioId)
         {
             CuestionarioEF itemBorrado = new CuestionarioEF()
             {
-                Id = cuestionario.Id
+                Id = cuestionarioId
             };
 
             _data.Eliminar(itemBorrado);

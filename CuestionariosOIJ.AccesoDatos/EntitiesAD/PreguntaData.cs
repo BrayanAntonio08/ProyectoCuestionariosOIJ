@@ -35,11 +35,16 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db.SaveChanges();
         }
 
-        public List<PreguntaEF> ListarPreguntas(int cuestionarioId)
+        public IEnumerable<PreguntaEF> ListarPreguntas(int cuestionarioId)
         {
-            return _db.Pregunta.
+            IEnumerable<PreguntaEF> temp = _db.Pregunta.
                 Where(aux => aux.Cuestionario.Id == cuestionarioId).
                 ToList();
+            foreach (PreguntaEF ef in temp)
+            {
+                ef.TipoPregunta = _db.TipoPregunta.Find(ef.TipoPreguntaId);
+            }
+            return temp;
         }
 
         public PreguntaEF ObtenerPreguntaPorID(int id)
@@ -67,13 +72,30 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public string consultarTipoPregunta(int id)
         {
-            return _db.TipoPregunta.Find(id).Nombre;
+            TipoPregunta ef = _db.TipoPregunta.Find(id);
+            if(ef != null)
+                return ef.Nombre;
+            return "";
         }
 
         public int ObtenerUltimaPosicion(int cuestionario)
         {
             int pos = _db.Pregunta.Where(aux => aux.CuestionarioId == cuestionario).Max(x => x.Posicion);
             return pos+1;
+        }
+
+        public IEnumerable<PreguntaEF> ListarPreguntasSeleccion(int cuestionario)
+        {
+            IEnumerable<PreguntaEF> temp = _db.Pregunta.
+                Where(aux => aux.CuestionarioId == cuestionario 
+                && aux.TipoPregunta.Nombre.StartsWith("Seleccion"));
+            List<TipoPregunta> tipos = _db.TipoPregunta.ToList();
+
+            foreach (PreguntaEF ef in temp)
+            {
+                ef.TipoPregunta = tipos.Find(tipo => tipo.Id == ef.TipoPreguntaId);
+            }
+            return temp;
         }
     }
 }
