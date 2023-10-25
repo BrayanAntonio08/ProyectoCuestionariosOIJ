@@ -11,8 +11,8 @@ namespace Cuestionarios.Domain
         private int _id;
         private string _codigo, _nombre, _tipo, _oficina, _descripcion, _link;
         private bool _activo;
-        private DateTime _vencimiento, _fechaCreacion;
-        private List<Pregunta> _preguntas;
+        private DateTime? _vencimiento, _fechaCreacion;
+        private List<Pregunta>? _preguntas;
         private List<Usuario> _revisadores;
 
         public Cuestionario() { }
@@ -39,9 +39,9 @@ namespace Cuestionarios.Domain
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
         public string Link { get => _link; set => _link = value; }
         public bool Activo { get => _activo; set => _activo = value; }
-        public DateTime Vencimiento { get => _vencimiento; set => _vencimiento = value; }
-        public DateTime FechaCreacion { get => _fechaCreacion; set => _fechaCreacion = value; }
-        public List<Pregunta> Preguntas { get => _preguntas; set => _preguntas = value; }
+        public DateTime? Vencimiento { get => _vencimiento; set => _vencimiento = value; }
+        public DateTime? FechaCreacion { get => _fechaCreacion; set => _fechaCreacion = value; }
+        public List<Pregunta>? Preguntas { get => _preguntas; set => _preguntas = value; }
         public List<Usuario> Revisadores { get => _revisadores; set => _revisadores = value; }
     }
 }

@@ -88,11 +88,11 @@ namespace CuestionariosOIJ.ReglasNegocio
             }
         }
 
-        public void EliminarCuestionario(Cuestionario cuestionario)
+        public void EliminarCuestionario(int cuestionarioId)
         {
             CuestionarioEF itemBorrado = new CuestionarioEF()
             {
-                Id = cuestionario.Id
+                Id = cuestionarioId
             };
 
             _data.Eliminar(itemBorrado);
@@ -141,6 +141,34 @@ namespace CuestionariosOIJ.ReglasNegocio
                     FechaCreacion = DateTime.Now,
                     Vencimiento = result.FechaVencimiento,
                 };
+                return nuevoItem;
+            }
+
+            return null;
+        }
+
+        public Cuestionario ObtenerCuestionarioPorCodigo(string codigo)
+        {
+            CuestionarioEF result = _data.ObtenerPorCodigo(codigo);
+
+            if (result != null)
+            {
+                Cuestionario nuevoItem = new Cuestionario()
+                {
+                    Id = result.Id,
+                    Codigo = result.Codigo,
+                    Nombre = result.Nombre,
+                    Descripcion = result.Descripcion,
+                    Activo = result.Activo,
+                    FechaCreacion = DateTime.Now,
+                    Vencimiento = result.FechaVencimiento,
+                };
+
+
+                //Se deben cargar todas las preguntas
+                PreguntaRN preguntaRN = new PreguntaRN();
+                nuevoItem.Preguntas = preguntaRN.ListarPreguntas(nuevoItem.Id);
+
                 return nuevoItem;
             }
 

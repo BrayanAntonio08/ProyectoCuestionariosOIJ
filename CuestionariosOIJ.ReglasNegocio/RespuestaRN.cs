@@ -29,7 +29,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                 TextoRespuesta = respuesta.TextoRespuesta,
                 FechaRespondida = DateTime.Now,
                 PreguntaId = respuesta.PreguntaRespondida.Id,
-                UsuarioId = respuesta.Encuestado.Id,
+                UsuarioId = respuesta.Encuestado,
             };
 
             _data.InsertarRespuesta(nuevoItem);
@@ -73,10 +73,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Pregunta.Id,
                         ContenidoPregunta = item.Pregunta.TextoPregunta
                         },
-                        Encuestado = new Usuario() { 
-                        Id= item.Usuario.Id,
-                        NombreUsuario = item.Usuario.NombreUsuario
-                        },
+                        Encuestado = item.UsuarioId,
                         Periodo = item.FechaEliminada,
                     }
                 );
@@ -105,11 +102,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                             Id = item.Pregunta.Id,
                             ContenidoPregunta = item.Pregunta.TextoPregunta
                         },
-                        Encuestado = new Usuario()
-                        {
-                            Id = item.Usuario.Id,
-                            NombreUsuario = item.Usuario.NombreUsuario
-                        },
+                        Encuestado = item.UsuarioId,
                         Periodo = item.FechaEliminada,
                     }
                 );
@@ -133,11 +126,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Id,
                         TextoRespuesta = item.TextoRespuesta,
                         TipoRespuesta = item.Pregunta.TipoPregunta.Nombre,
-                        Encuestado = new Usuario()
-                        {
-                            Id = item.Usuario.Id,
-                            NombreUsuario = item.Usuario.NombreUsuario
-                        },
+                        Encuestado = item.UsuarioId,
                         Periodo = item.FechaEliminada,
                     }
                 );

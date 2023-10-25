@@ -57,7 +57,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
             this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
             this.DbManager.addParameter("@OficinaID", "int", cuestionario.OficinaId);
-            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime((DateTime)cuestionario.FechaVencimiento));
             this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
 
 
@@ -106,8 +106,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
             this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
             this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
-            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime(cuestionario.FechaVencimiento));
-            
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime((DateTime)cuestionario.FechaVenci
 
 
             //Ejercutar el procedimiento en la base de datos

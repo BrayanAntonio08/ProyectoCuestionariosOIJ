@@ -21,6 +21,8 @@ namespace CuestionariosOIJ.ReglasNegocio
 
         public void InsertarPregunta(Pregunta pregunta)
         {
+            int posicion = _data.ObtenerUltimaPosicion(pregunta.Cuestionario.Id);
+
             // Crea un nuevo objeto PreguntaEF
             PreguntaEF nuevoItem = new PreguntaEF()
             {
@@ -32,7 +34,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                 SubcategoriaId = pregunta.Subcategoria.Id,
                 TipoPreguntaId = _data.BuscarTipoPreguntaPorNombre(pregunta.TipoRespuesta),
                 TextoPregunta = pregunta.ContenidoPregunta,
-                Posicion = pregunta.Posicion,
+                Posicion = posicion,
             };
 
             _data.InsertarPregunta(nuevoItem);
@@ -57,46 +59,42 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.ActualizarPregunta(nuevoItem);
         }
 
-        public void EliminarPregunta(Pregunta pregunta)
+        public void EliminarPregunta(int preguntaId)
         {
             PreguntaEF itemBorrado = new PreguntaEF()
             {
-                Id = pregunta.Id
+                Id = preguntaId
             };
 
             _data.EliminarPregunta(itemBorrado);
         }
 
-        public List<Pregunta> ListarPreguntas(Cuestionario cuestionario)
+
+        private Pregunta parsePregunta(PreguntaEF item)
+        {
+            Pregunta resultado = new Pregunta();
+            resultado.Id = item.Id;
+            resultado.Categoria = new CategoriaRN().ObtenerPorID((int)item.CategoriaId);
+            resultado.Justificacion = item.Justificacion;
+            resultado.Etiqueta = item.Etiqueta;
+            resultado.Obligatoria = item.Obligatoria;
+            resultado.Subcategoria = new SubcategoriaRN().ObtenerPorID((int)item.SubcategoriaId);
+            resultado.TipoRespuesta = item.TipoPregunta.Nombre;
+            resultado.ContenidoPregunta = item.TextoPregunta;
+            resultado.Posicion = item.Posicion;
+            resultado.Opciones = new OpcionRespuestaRN().ListarOpcionesRespuesta(item.Id);
+
+            return resultado;
+        }
+
+        public List<Pregunta> ListarPreguntas(int cuestionarioID)
         {
 
             List<Pregunta> resultado = new List<Pregunta>();
-            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
-            List<PreguntaEF> itemsGuardados = _data.ListarPreguntas(cuestionarioEF);
+            List<PreguntaEF> itemsGuardados = (List<PreguntaEF>)_data.ListarPreguntas(cuestionarioID);
             foreach (var item in itemsGuardados)
             {
-                resultado.Add(
-                   new Pregunta()
-                   {
-                       Id = item.Id,
-                       Categoria = new Categoria()
-                       {
-                           Id = item.Categoria.Id,
-                           Nombre = item.Categoria.Nombre
-                       },
-                       Justificacion = item.Justificacion,
-                       Etiqueta = item.Etiqueta,
-                       Obligatoria = item.Obligatoria,
-                       Subcategoria = new Subcategoria()
-                       {
-                           Id = item.Subcategoria.Id,
-                           Nombre = item.Subcategoria.Nombre
-                       },
-                       TipoRespuesta = item.TipoPregunta.Nombre,
-                       ContenidoPregunta = item.TextoPregunta,
-                       Posicion = item.Posicion,
-                   }
-                   );
+                resultado.Add(parsePregunta(item));
             }
             return resultado;
 
@@ -105,28 +103,9 @@ namespace CuestionariosOIJ.ReglasNegocio
        public Pregunta ObtenerPreguntaPorID(int id)
          {
             PreguntaEF item = _data.ObtenerPreguntaPorID(id);
-            Pregunta resultado = new Pregunta()
-            {
-                Id = item.Id,
-                Categoria = new Categoria()
-                {
-                    Id = item.Categoria.Id,
-                    Nombre = item.Categoria.Nombre
-                },
-                Justificacion = item.Justificacion,
-                Etiqueta = item.Etiqueta,
-                Obligatoria = item.Obligatoria,
-                Subcategoria = new Subcategoria()
-                {
-                    Id = item.Subcategoria.Id,
-                    Nombre = item.Subcategoria.Nombre
-                },
-                TipoRespuesta = item.TipoPregunta.Nombre,
-                ContenidoPregunta = item.TextoPregunta,
-                Posicion = item.Posicion,
-            };
-               
-        return resultado;
+            Pregunta resultado = parsePregunta(item);
+
+            return resultado;
         }
 
         public Pregunta ObtenerPreguntaEn(Cuestionario cuestionario, int posicion)
@@ -155,6 +134,19 @@ namespace CuestionariosOIJ.ReglasNegocio
             };
 
             return resultado;
+        }
+
+        public List<Pregunta> ListarPreguntasSeleccion(int cuestionario)
+        {
+            IEnumerable<PreguntaEF> list = _data.ListarPreguntasSeleccion(cuestionario);
+            List<Pregunta> preguntas = new List<Pregunta>();
+
+            foreach(PreguntaEF ef in list)
+            {
+                Pregunta factible = parsePregunta(ef);
+                preguntas.Add(factible);
+            }
+            return preguntas;
         }
     }
 }

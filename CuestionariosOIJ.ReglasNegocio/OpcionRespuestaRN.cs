@@ -20,31 +20,60 @@ namespace CuestionariosOIJ.ReglasNegocio
         }
 
 
-        public void InsertarOpcionRespuesta(Pregunta pregunta)
+        public int InsertarOpcionRespuesta(int preguntaId, OpcionRespuesta opcion)
         {
-            foreach(OpcionRespuesta opcion in pregunta.Opciones) { 
-                OpcionRespuestaEF nuevoItem = new OpcionRespuestaEF()
-                {
-                    PreguntaId = pregunta.Id,
-                    TextoOpcion = opcion.TextoOpcion,
-                };
 
-                _data.Insertar(nuevoItem);
-            }
+            OpcionRespuestaEF nuevoItem = new OpcionRespuestaEF()
+            {
+                PreguntaId = preguntaId,
+                TextoOpcion = opcion.TextoOpcion,
+            };
+
+            return _data.Insertar(nuevoItem);
         }
-        
-        public List<OpcionRespuesta> ListarOpcionesRespuesta(Pregunta pregunta)
+
+        public List<OpcionRespuesta> ListarOpcionesRespuesta(int preguntaId)
         {
-            PreguntaEF origen = new PreguntaData(new CuestionariosContext()).ObtenerPreguntaPorID(pregunta.Id);
-            List<OpcionRespuestaEF> datos = _data.Listar(origen);
+            List<OpcionRespuestaEF> datos = _data.Listar(preguntaId);
 
             List<OpcionRespuesta> resultado = new List<OpcionRespuesta>();
-            foreach(OpcionRespuestaEF objeto in  datos)
+            foreach (OpcionRespuestaEF objeto in datos)
             {
                 resultado.Add(new OpcionRespuesta(objeto.Id, objeto.TextoOpcion));
             }
 
             return resultado;
+        }
+
+        public OpcionRespuesta ObtenerPorID(int id)
+        {
+            OpcionRespuestaEF temp = _data.ObtenerPorID(id);
+            return new OpcionRespuesta(temp.Id, temp.TextoOpcion);
+        }
+
+        public bool eliminarOpcionRespuesta(int id)
+        {
+            OpcionRespuestaEF opcion = _data.ObtenerPorID(id);
+            if (opcion == null)
+            {
+                return false;
+            }
+            _data.Eliminar(opcion);
+            return true;
+
+        }
+
+        public OpcionRespuesta actualizarOpcionRespuesta(OpcionRespuesta opcion)
+        {
+            OpcionRespuestaEF opcionEF = _data.ObtenerPorID(opcion.Id);
+            if (opcionEF == null)
+            {
+                return null;
+            }
+
+            opcionEF.TextoOpcion = opcion.TextoOpcion;
+            _data.Actualizar(opcionEF);
+            return opcion;
         }
     }
 }
