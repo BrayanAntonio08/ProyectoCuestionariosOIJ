@@ -37,9 +37,12 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public IEnumerable<PreguntaEF> ListarPreguntas(int cuestionarioId)
         {
-            IEnumerable<PreguntaEF> temp = _db.Pregunta.
-                Where(aux => aux.Cuestionario.Id == cuestionarioId).
-                ToList();
+            IEnumerable<PreguntaEF> temp = _db.Pregunta
+                .Where(aux => aux.Cuestionario.Id == cuestionarioId)
+                .OrderBy(aux => aux.Posicion)
+                .ToList();
+
+
             foreach (PreguntaEF ef in temp)
             {
                 ef.TipoPregunta = _db.TipoPregunta.Find(ef.TipoPreguntaId);
@@ -77,6 +80,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
                 return ef.Nombre;
             return "";
         }
+
 
         public int ObtenerUltimaPosicion(int cuestionario)
         {

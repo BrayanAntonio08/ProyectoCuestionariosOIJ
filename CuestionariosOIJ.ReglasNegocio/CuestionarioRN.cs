@@ -17,7 +17,7 @@ namespace CuestionariosOIJ.ReglasNegocio
 
         public CuestionarioRN()
         {
-            _data = new CuestionarioData(new CuestionariosContext());
+            _data = new CuestionarioData();
         }
 
         public static string GenerarCodigo()

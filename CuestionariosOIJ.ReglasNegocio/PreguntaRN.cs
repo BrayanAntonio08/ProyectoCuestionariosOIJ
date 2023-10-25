@@ -40,7 +40,7 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.InsertarPregunta(nuevoItem);
         }
 
-        public void ActualizarPregunta(Pregunta pregunta)
+        public void ActualizarPregunta(int cuestionarioId, Pregunta pregunta)
         {
 
             PreguntaEF nuevoItem = new PreguntaEF()
@@ -54,6 +54,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                 TipoPreguntaId = _data.BuscarTipoPreguntaPorNombre(pregunta.TipoRespuesta),
                 TextoPregunta = pregunta.ContenidoPregunta,
                 Posicion = pregunta.Posicion,
+                CuestionarioId = cuestionarioId
             };
 
             _data.ActualizarPregunta(nuevoItem);
@@ -110,7 +111,7 @@ namespace CuestionariosOIJ.ReglasNegocio
 
         public Pregunta ObtenerPreguntaEn(Cuestionario cuestionario, int posicion)
         {
-            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario.Id);
             PreguntaEF item = _data.ObtenerPreguntaEn(cuestionarioEF, posicion);
             Pregunta resultado = new Pregunta()
             {

@@ -37,7 +37,7 @@ namespace CuestionariosOIJ.ReglasNegocio
         }
 
         public void BorrarRespuestasCuestionario(Cuestionario cuestionario) {
-            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario.Id);
             List<RespuestaEF> respuestas = _data.ListarRespuestas(cuestionarioEF);
             foreach (var respuesta in respuestas)
             {
@@ -59,7 +59,7 @@ namespace CuestionariosOIJ.ReglasNegocio
         public List<Respuesta> ListarRespuestasTotales(Cuestionario cuestionario)
         {
             List<Respuesta> resultado = new List<Respuesta>();
-            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario.Id);
             List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotales(cuestionarioEF);
             foreach (var item in itemsGuardados)
             {

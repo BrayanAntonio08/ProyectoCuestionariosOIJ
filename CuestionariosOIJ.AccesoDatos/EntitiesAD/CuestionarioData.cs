@@ -18,9 +18,9 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         internal DataBaseManager DbManager { get => _dbManager; set => _dbManager = value; }
 
-        public CuestionarioData(CuestionariosContext context)
+        public CuestionarioData()
         {
-            _db = context;
+            _db = new CuestionariosContext();
             _dbManager = new DataBaseManager();
         }
 
