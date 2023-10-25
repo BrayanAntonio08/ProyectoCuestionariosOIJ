@@ -69,15 +69,23 @@ namespace CuestionariosOIJ.ReglasNegocio
             CuestionarioEF nuevoItem = new CuestionarioEF()
             {
                 Id = cuestionario.Id,
-                Codigo = cuestionario.Codigo,
                 Nombre = cuestionario.Nombre,
                 Descripcion = cuestionario.Descripcion,
                 Activo = cuestionario.Activo,
-                FechaCreacion = DateTime.Now,
-                FechaVencimiento=cuestionario.Vencimiento,
+                FechaVencimiento = cuestionario.Vencimiento,
+                TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id
             };
 
-            _data.Actualizar(nuevoItem);
+            _data.ActualizarCuestionario(nuevoItem);
+
+            // actualizar todas las preguntas (posicion)
+            PreguntaRN preguntaRN = new PreguntaRN();
+            foreach (var pregunta in cuestionario.Preguntas)
+            {
+                Pregunta aux = preguntaRN.ObtenerPreguntaPorID(pregunta.Id);
+                aux.Posicion = pregunta.Posicion;
+                preguntaRN.ActualizarPregunta(aux);
+            }
         }
 
         public void EliminarCuestionario(int cuestionarioId)
