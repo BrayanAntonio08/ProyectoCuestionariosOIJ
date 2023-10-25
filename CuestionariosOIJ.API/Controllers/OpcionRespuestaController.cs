@@ -9,7 +9,7 @@ namespace CuestionariosOIJ.API.Controllers
     [ApiController]
     public class OpcionRespuestaController : ControllerBase
     {
-        [HttpPost("InsertarOpcionRespuesta/{preguntaId}")]
+        [HttpPost("{preguntaId}")]
         public async Task<ActionResult<OpcionRespuesta>> InsertarOpcionRespuesta(int preguntaId, [FromBody] OpcionRespuesta opcion)
         {
             
@@ -19,18 +19,35 @@ namespace CuestionariosOIJ.API.Controllers
             return Ok(opcion);
         }
 
-        [HttpGet ("/api/[controller]/{preguntaId}")]
+        [HttpGet ("listar/{preguntaId}")]
         public async Task<ActionResult<List<OpcionRespuesta>>> ListarOpcionRespuesta(int preguntaId){
             OpcionRespuestaRN opcionRespuestaRN = new OpcionRespuestaRN();
             return Ok(opcionRespuestaRN.ListarOpcionesRespuesta(preguntaId));
         }
 
-        [HttpGet("/api/[controller]/{opcionId}")]
+        [HttpGet("{opcionId}")]
         public async Task<ActionResult<OpcionRespuesta>> ObtenerOpcionRespuesta(int opcionId)
         {
             OpcionRespuestaRN opcionRespuestaRN = new OpcionRespuestaRN();
             return Ok(opcionRespuestaRN.ObtenerPorID(opcionId));
         }
 
+        [HttpDelete("{opcionId}")]
+        public async Task<ActionResult> eliminarOpcionRespuesta(int opcionId)
+        {
+            OpcionRespuestaRN opcionRespuestaRN = new OpcionRespuestaRN();
+
+            return opcionRespuestaRN.eliminarOpcionRespuesta(opcionId)? Ok():BadRequest();
+        }
+
+        [HttpPut]
+        public async Task<ActionResult<OpcionRespuesta>> actualizarOpcionRespuesta([FromBody] OpcionRespuesta opcion)
+        {
+            OpcionRespuestaRN opcionRespuestaRN = new OpcionRespuestaRN();
+            OpcionRespuesta resultado = opcionRespuestaRN.actualizarOpcionRespuesta(opcion);
+            if (resultado == null)
+                return BadRequest();
+            return Ok(resultado);
+        }
     }
 }

@@ -31,13 +31,13 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             return _data.Insertar(nuevoItem);
         }
-        
+
         public List<OpcionRespuesta> ListarOpcionesRespuesta(int preguntaId)
         {
             List<OpcionRespuestaEF> datos = _data.Listar(preguntaId);
 
             List<OpcionRespuesta> resultado = new List<OpcionRespuesta>();
-            foreach(OpcionRespuestaEF objeto in  datos)
+            foreach (OpcionRespuestaEF objeto in datos)
             {
                 resultado.Add(new OpcionRespuesta(objeto.Id, objeto.TextoOpcion));
             }
@@ -49,6 +49,31 @@ namespace CuestionariosOIJ.ReglasNegocio
         {
             OpcionRespuestaEF temp = _data.ObtenerPorID(id);
             return new OpcionRespuesta(temp.Id, temp.TextoOpcion);
+        }
+
+        public bool eliminarOpcionRespuesta(int id)
+        {
+            OpcionRespuestaEF opcion = _data.ObtenerPorID(id);
+            if (opcion == null)
+            {
+                return false;
+            }
+            _data.Eliminar(opcion);
+            return true;
+
+        }
+
+        public OpcionRespuesta actualizarOpcionRespuesta(OpcionRespuesta opcion)
+        {
+            OpcionRespuestaEF opcionEF = _data.ObtenerPorID(opcion.Id);
+            if (opcionEF == null)
+            {
+                return null;
+            }
+
+            opcionEF.TextoOpcion = opcion.TextoOpcion;
+            _data.Actualizar(opcionEF);
+            return opcion;
         }
     }
 }
