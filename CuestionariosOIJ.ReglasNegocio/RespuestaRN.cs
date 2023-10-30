@@ -23,6 +23,7 @@ namespace CuestionariosOIJ.ReglasNegocio
 
         public void InsertarRespuesta(Respuesta respuesta)
         {
+            
             // Crea un nuevo objeto RespuestaEF
             RespuestaEF nuevoItem = new RespuestaEF()
             {
@@ -32,8 +33,12 @@ namespace CuestionariosOIJ.ReglasNegocio
                 UsuarioId = respuesta.Encuestado,
             };
 
-            _data.InsertarRespuesta(nuevoItem);
+            int id = _data.InsertarRespuesta(nuevoItem);
 
+            foreach (OpcionRespuesta opcion in respuesta.OpcionesEscogidas)
+            {
+                _data.AgregarOpcionEscogida(opcion.Id, id);
+            }
         }
 
         public void BorrarRespuestasCuestionario(Cuestionario cuestionario) {
@@ -56,10 +61,10 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.EliminarRespuesta(nuevoItem);
         }
 
-        public List<Respuesta> ListarRespuestasTotales(Cuestionario cuestionario)
+        public List<Respuesta> ListarRespuestasTotales(int cuestionario)
         {
             List<Respuesta> resultado = new List<Respuesta>();
-            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario.Id);
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario);
             List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotales(cuestionarioEF);
             foreach (var item in itemsGuardados)
             {

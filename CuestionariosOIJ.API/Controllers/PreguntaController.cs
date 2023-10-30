@@ -20,7 +20,7 @@ namespace CuestionariosOIJ.API.Controllers
 
             // Guardar la pregunta
             PreguntaRN business = new PreguntaRN();
-            business.InsertarPregunta(pregunta);
+            pregunta = business.InsertarPregunta(pregunta);
 
             // Devolver una respuesta exitosa
             return await Task.FromResult(Ok(pregunta));
@@ -84,13 +84,13 @@ namespace CuestionariosOIJ.API.Controllers
         public async Task<ActionResult<Pregunta>> ObtenerPreguntaEn(Cuestionario cuestionario, int posicion)
         {
             PreguntaRN business = new PreguntaRN();
-            Pregunta pregunta = business.ObtenerPreguntaEn(cuestionario,posicion);
+            Pregunta pregunta = business.ObtenerPreguntaEn(cuestionario, posicion);
 
             return await Task.FromResult(Ok(pregunta));
         }
 
-        
-        [HttpDelete(Name = "EliminarPregunta")]
+
+        [HttpDelete("{pregunta}")]
         public async Task<ActionResult> EliminarPregunta(int pregunta)
         {
             PreguntaRN business = new PreguntaRN();

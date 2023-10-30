@@ -42,6 +42,13 @@ namespace CuestionariosOIJ.ReglasNegocio
             {
                 codigo = GenerarCodigo();
             }
+            OficinaEF oficina = _data.leerOficina(cuestionario.Oficina);
+            if (oficina == null) {
+                _data.NuevaOficina(cuestionario.Oficina);
+                oficina=_data.leerOficina(cuestionario.Oficina);
+            }
+               
+
             CuestionarioEF nuevoItem = new CuestionarioEF()
             {
                 Codigo = codigo,
@@ -49,7 +56,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                 Descripcion = cuestionario.Descripcion,
                 Activo = cuestionario.Activo,
                 FechaVencimiento = cuestionario.Vencimiento,
-                OficinaId = _data.leerOficina(cuestionario.Oficina).Id,
+                OficinaId = oficina.Id,
                 TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id,  
                 Eliminado = false
             };
@@ -78,14 +85,6 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             _data.ActualizarCuestionario(nuevoItem);
 
-            // actualizar todas las preguntas (posicion)
-            PreguntaRN preguntaRN = new PreguntaRN();
-            foreach (var pregunta in cuestionario.Preguntas)
-            {
-                Pregunta aux = preguntaRN.ObtenerPreguntaPorID(pregunta.Id);
-                aux.Posicion = pregunta.Posicion;
-                preguntaRN.ActualizarPregunta(aux);
-            }
         }
 
         public void EliminarCuestionario(int cuestionarioId)
@@ -140,6 +139,9 @@ namespace CuestionariosOIJ.ReglasNegocio
                     Activo = result.Activo,
                     FechaCreacion = DateTime.Now,
                     Vencimiento = result.FechaVencimiento,
+                    Tipo = result.TipoCuestionario.Nombre,
+                    Oficina = _data.ObtenerOficina(result.OficinaId),
+                    Link = ""
                 };
                 return nuevoItem;
             }

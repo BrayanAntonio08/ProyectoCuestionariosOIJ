@@ -19,7 +19,7 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data = new PreguntaData(new CuestionariosContext());
         }
 
-        public void InsertarPregunta(Pregunta pregunta)
+        public Pregunta InsertarPregunta(Pregunta pregunta)
         {
             int posicion = _data.ObtenerUltimaPosicion(pregunta.Cuestionario.Id);
 
@@ -37,7 +37,8 @@ namespace CuestionariosOIJ.ReglasNegocio
                 Posicion = posicion,
             };
 
-            _data.InsertarPregunta(nuevoItem);
+            pregunta.Id = _data.InsertarPregunta(nuevoItem);
+            return pregunta;
         }
 
         public void ActualizarPregunta(int cuestionarioId, Pregunta pregunta)
@@ -62,10 +63,7 @@ namespace CuestionariosOIJ.ReglasNegocio
 
         public void EliminarPregunta(int preguntaId)
         {
-            PreguntaEF itemBorrado = new PreguntaEF()
-            {
-                Id = preguntaId
-            };
+            PreguntaEF itemBorrado = _data.ObtenerPreguntaPorID(preguntaId);
 
             _data.EliminarPregunta(itemBorrado);
         }
@@ -144,8 +142,11 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             foreach(PreguntaEF ef in list)
             {
-                Pregunta factible = parsePregunta(ef);
-                preguntas.Add(factible);
+                if (!ef.Eliminado)
+                {
+                    Pregunta factible = parsePregunta(ef);
+                    preguntas.Add(factible);
+                }
             }
             return preguntas;
         }

@@ -9,7 +9,8 @@ namespace Cuestionarios.Domain
     public class Cuestionario
     {
         private int _id;
-        private string _codigo, _nombre, _tipo, _oficina, _descripcion, _link;
+        private string _codigo, _nombre, _tipo, _oficina, _descripcion;
+        private string? _link;
         private bool _activo;
         private DateTime? _vencimiento, _fechaCreacion;
         private List<Pregunta>? _preguntas;
@@ -37,7 +38,7 @@ namespace Cuestionarios.Domain
         public string Tipo { get => _tipo; set => _tipo = value; }
         public string Oficina { get => _oficina; set => _oficina = value; }
         public string Descripcion { get => _descripcion; set => _descripcion = value; }
-        public string Link { get => _link; set => _link = value; }
+        public string? Link { get => _link; set => _link = value; }
         public bool Activo { get => _activo; set => _activo = value; }
         public DateTime? Vencimiento { get => _vencimiento; set => _vencimiento = value; }
         public DateTime? FechaCreacion { get => _fechaCreacion; set => _fechaCreacion = value; }

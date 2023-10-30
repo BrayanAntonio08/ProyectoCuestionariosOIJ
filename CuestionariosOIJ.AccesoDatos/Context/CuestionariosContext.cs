@@ -185,6 +185,10 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
                 entity.Property(e => e.TipoPreguntaId).HasColumnName("TipoPreguntaID");
 
+                entity.Property(e => e.Eliminado)
+                    .HasColumnName("Eliminado")
+                    .HasColumnType("bit");
+
                 entity.HasOne(d => d.Categoria)
                     .WithMany(p => p.Pregunta)
                     .HasForeignKey(d => d.CategoriaId)

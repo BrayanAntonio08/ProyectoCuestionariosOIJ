@@ -10,24 +10,25 @@ namespace CuestionariosOIJ.API.Controllers
     public class RespuestaController : ControllerBase
     {
         [HttpPost(Name = "InsertarRespuesta")]
-        public async Task<ActionResult> InsertarRespuesta([FromBody] Respuesta respuesta)
+        public async Task<ActionResult> InsertarRespuesta([FromBody] List<Respuesta> respuestas)
         {
             // Validar los datos recibidos
-            if (respuesta == null || respuesta.TipoRespuesta == null)
+            if (respuestas == null || respuestas.Count() == 0)
             {
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
 
             // Guardar la categoria
             RespuestaRN business = new RespuestaRN();
-            business.InsertarRespuesta(respuesta);
+            foreach (var respuesta in respuestas)
+                business.InsertarRespuesta(respuesta);
 
             // Devolver una respuesta exitosa
-            return await Task.FromResult(Ok(respuesta));
+            return await Task.FromResult(Ok());
         }
 
-        [HttpGet ("ListarRespuestasTotales")]
-        public async Task<ActionResult<List<Respuesta>>> ListarRespuestasTotales([FromBody] Cuestionario cuestionario)
+        [HttpGet ("ListarTotal/{cuestionario}")]
+        public async Task<ActionResult<List<Respuesta>>> ListarRespuestasTotales(int cuestionario)
         {
             RespuestaRN business = new RespuestaRN();
             List<Respuesta> respuestas = business.ListarRespuestasTotales(cuestionario);

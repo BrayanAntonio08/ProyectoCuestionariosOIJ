@@ -17,10 +17,11 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db = context;
         }
 
-        public void InsertarPregunta(PreguntaEF pregunta)
+        public int InsertarPregunta(PreguntaEF pregunta)
         {
             _db.Pregunta.Add(pregunta);
             _db.SaveChanges();
+            return _db.Pregunta.Max(aux=>aux.Id);
         }
 
         public void ActualizarPregunta(PreguntaEF pregunta)
@@ -29,16 +30,18 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db.SaveChanges();
         }
 
+
         public void EliminarPregunta(PreguntaEF pregunta)
         {
-            _db.Pregunta.Remove(pregunta);
+            pregunta.Eliminado = true;
+            _db.Pregunta.Update(pregunta);
             _db.SaveChanges();
         }
 
         public IEnumerable<PreguntaEF> ListarPreguntas(int cuestionarioId)
         {
             IEnumerable<PreguntaEF> temp = _db.Pregunta
-                .Where(aux => aux.Cuestionario.Id == cuestionarioId)
+                .Where(aux => aux.Cuestionario.Id == cuestionarioId && !aux.Eliminado)
                 .OrderBy(aux => aux.Posicion)
                 .ToList();
 
@@ -84,7 +87,10 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public int ObtenerUltimaPosicion(int cuestionario)
         {
-            int pos = _db.Pregunta.Where(aux => aux.CuestionarioId == cuestionario).Max(x => x.Posicion);
+            IEnumerable<PreguntaEF> list = _db.Pregunta.Where(aux => aux.CuestionarioId == cuestionario).ToList();
+            if (list.Count() == 0)
+                return 1;
+            int pos = list.Max(x => x.Posicion);
             return pos+1;
         }
 

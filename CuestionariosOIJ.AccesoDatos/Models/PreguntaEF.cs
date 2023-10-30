@@ -21,7 +21,7 @@ namespace CuestionariosOIJ.API.Models
         public int? SubcategoriaId { get; set; }
         public int TipoPreguntaId { get; set; }
         public int CuestionarioId { get; set; }
-
+        public bool Eliminado { get; set; }
         public virtual CategoriaEF? Categoria { get; set; }
         public virtual CuestionarioEF Cuestionario { get; set; } = null!;
         public virtual SubcategoriaEF? Subcategoria { get; set; }
