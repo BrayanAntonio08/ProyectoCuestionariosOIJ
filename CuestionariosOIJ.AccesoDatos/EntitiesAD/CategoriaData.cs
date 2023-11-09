@@ -1,5 +1,5 @@
 ﻿using CuestionariosOIJ.AccesoDatos.Context;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,34 +19,35 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public List<CategoriaEF> ListarCategorias()
         {
-            return _db.Categoria.ToList();
+            return _db.Categorias.ToList();
         }
 
-        public CategoriaEF ObtenerCategoriaPorID(int id)
+        public CategoriaEF? ObtenerCategoriaPorID(int? id)
         {
-            return _db.Categoria.Find(id);
+            return _db.Categorias.Find(id);
         }
 
         public CategoriaEF ObtenerCategoriaPorNombre(string nombre)
         {
-            return _db.Categoria.Where( x => x.Nombre == nombre).First();
+            return _db.Categorias.Where( x => x.Nombre == nombre).FirstOrDefault();
         }
 
-        public void InsertarCategoria(CategoriaEF categoria)
+        public int InsertarCategoria(CategoriaEF categoria)
         {
-            _db.Categoria.Add(categoria);
+            _db.Categorias.Add(categoria);
             _db.SaveChanges();
+            return categoria.Id;
         }
 
         public void ActualizarCategoria(CategoriaEF categoria)
         {
-            _db.Categoria.Update(categoria);
+            _db.Categorias.Update(categoria);
             _db.SaveChanges();
         }
 
         public void EliminarCategoria(CategoriaEF categoria)
         {
-            _db.Categoria.Remove(categoria);
+            _db.Categorias.Remove(categoria);
             _db.SaveChanges();
         }
     }

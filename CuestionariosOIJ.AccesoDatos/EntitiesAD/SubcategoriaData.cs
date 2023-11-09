@@ -1,5 +1,5 @@
 ﻿using CuestionariosOIJ.AccesoDatos.Context;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,42 +17,43 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db = context;
         }
 
-        public void InsertarSubcategoria(SubcategoriaEF subcategoria)
+        public int InsertarSubcategoria(SubcategoriaEF subcategoria)
         {
-            _db.Subcategoria.Add(subcategoria);
+            _db.Subcategorias.Add(subcategoria);
             _db.SaveChanges();
+            return subcategoria.Id;
         }
 
         public void ActualizarSubcategoria(SubcategoriaEF subcategoria)
         {
-            _db.Subcategoria.Update(subcategoria);
+            _db.Subcategorias.Update(subcategoria);
             _db.SaveChanges ();
         }
 
         public void EliminarSubcategoria(SubcategoriaEF subcategoria)
         {
-            _db.Subcategoria.Remove(subcategoria);
+            _db.Subcategorias.Remove(subcategoria);
             _db.SaveChanges ();
         }
 
         public List<SubcategoriaEF> ListarSubcategorias()
         {
-            return _db.Subcategoria.ToList();
+            return _db.Subcategorias.ToList();
         }
 
-        public SubcategoriaEF ObtenerSubcategoriaPorID(int id)
+        public SubcategoriaEF? ObtenerSubcategoriaPorID(int? id)
         {
-            return _db.Subcategoria.Find(id);
+            return _db.Subcategorias.Find(id);
         }
 
         public SubcategoriaEF ObtenerSubcategoriaPorNombre(string nombre)
         {
-            return _db.Subcategoria.Where(x => x.Nombre == nombre).First();
+            return _db.Subcategorias.Where(x => x.Nombre == nombre).FirstOrDefault();
         }
 
         public List<SubcategoriaEF> ListarSubcategoriasDeCategoria(CategoriaEF categoria)
         {
-            return _db.Subcategoria.Where(sub => sub.CategoriaId == categoria.Id).ToList();
+            return _db.Subcategorias.Where(sub => sub.CategoriaId == categoria.Id).ToList();
         }
 
     }

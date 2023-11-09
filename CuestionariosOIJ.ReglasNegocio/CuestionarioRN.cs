@@ -1,7 +1,7 @@
 ﻿using Cuestionarios.Domain;
 using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.EntitiesAD;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +20,39 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data = new CuestionarioData();
         }
 
+        private Cuestionario toCuestionario(CuestionarioEF quest)
+        {
+
+            return new Cuestionario()
+            {
+                Id = quest.Id,
+                Nombre = quest.Nombre,
+                Descripcion = quest.Descripcion,
+                Vencimiento = quest.FechaVencimiento,
+                Activo = quest.Activo,
+                Codigo = quest.Codigo,
+                FechaCreacion = quest.FechaCreacion,
+                Oficina = _data.ObtenerOficina(quest.OficinaId),
+                Tipo = _data.ObtenerTipo(quest.TipoCuestionarioId),
+            };
+        }
+        private CuestionarioEF toCuestionarioEF(Cuestionario quest)
+        {
+            OficinaEF oficina = _data.leerOficina(quest.Oficina);
+            TipoCuestionarioEF tipo = _data.leerTipo(quest.Tipo);
+            return new CuestionarioEF()
+            {
+                Id=quest.Id,
+                Nombre = quest.Nombre,
+                Descripcion = quest.Descripcion,
+                Activo= quest.Activo,
+                Codigo= quest.Codigo,
+                Eliminado = false,
+                FechaVencimiento = (DateTime)quest.Vencimiento,
+                OficinaId = oficina.Id,
+                TipoCuestionarioId = tipo.Id
+            };
+        }
         public static string GenerarCodigo()
         {
             // Definir un conjunto de caracteres alfanuméricos
@@ -35,55 +68,43 @@ namespace CuestionariosOIJ.ReglasNegocio
             return codigo;
         }
 
-        public void InsertarCuestionario(Cuestionario cuestionario)
+        public Cuestionario InsertarCuestionario(Cuestionario cuestionario)
         {
+            //se genera el código único
             string codigo = GenerarCodigo();
             while (_data.ExisteCodigo(codigo))
             {
                 codigo = GenerarCodigo();
             }
+            cuestionario.Codigo = codigo;
+
+            //se carga la oficina asociada, o se crea si no existe
             OficinaEF oficina = _data.leerOficina(cuestionario.Oficina);
             if (oficina == null) {
                 _data.NuevaOficina(cuestionario.Oficina);
-                oficina=_data.leerOficina(cuestionario.Oficina);
             }
-               
 
-            CuestionarioEF nuevoItem = new CuestionarioEF()
-            {
-                Codigo = codigo,
-                Nombre = cuestionario.Nombre,
-                Descripcion = cuestionario.Descripcion,
-                Activo = cuestionario.Activo,
-                FechaVencimiento = cuestionario.Vencimiento,
-                OficinaId = oficina.Id,
-                TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id,  
-                Eliminado = false
-            };
+            CuestionarioEF insertado = toCuestionarioEF(cuestionario);
 
-            _data.InsertarCuestionario(nuevoItem);
+            _data.InsertarCuestionario(insertado);
 
             CuestionarioEF resultado = _data.ObtenerPorCodigo(codigo);
 
-            foreach(Usuario revisador in cuestionario.Revisadores)
+            foreach(string revisador in cuestionario.Revisadores)
             {
-                _data.InsertarRevisador(resultado, revisador.NombreUsuario);
+                _data.InsertarRevisador(resultado, revisador);
             }
+
+            cuestionario.Id = resultado.Id;
+            return cuestionario;
         }
 
         public void ActualizarCuestionario(Cuestionario cuestionario)
         {
-            CuestionarioEF nuevoItem = new CuestionarioEF()
-            {
-                Id = cuestionario.Id,
-                Nombre = cuestionario.Nombre,
-                Descripcion = cuestionario.Descripcion,
-                Activo = cuestionario.Activo,
-                FechaVencimiento = cuestionario.Vencimiento,
-                TipoCuestionarioId = _data.leerTipo(cuestionario.Tipo).Id
-            };
+            OficinaEF oficina = _data.leerOficina(cuestionario.Oficina); 
+            CuestionarioEF actualizado = toCuestionarioEF(cuestionario);
 
-            _data.ActualizarCuestionario(nuevoItem);
+            _data.ActualizarCuestionario(actualizado);
 
         }
 
@@ -100,25 +121,14 @@ namespace CuestionariosOIJ.ReglasNegocio
         public List<Cuestionario> ListarCuestionario()
         {
             List<Cuestionario> resultado = new List<Cuestionario>();
+
             List<CuestionarioEF> itemsGuardados = _data.Listar();
             foreach (var cuestionario in itemsGuardados.Where(x => x.Eliminado == false))
             {
-                resultado.Add(
-                    new Cuestionario()
-                    {
-                        Id = cuestionario.Id,
-                        Codigo = cuestionario.Codigo,
-                        Nombre = cuestionario.Nombre,
-                        Descripcion = cuestionario.Descripcion,
-                        Activo = cuestionario.Activo,
-                        FechaCreacion = cuestionario.FechaCreacion,
-                        Vencimiento = cuestionario.FechaVencimiento,
-                        Oficina = _data.ObtenerOficina(cuestionario.OficinaId),
-                        Tipo = _data.ObtenerTipo(cuestionario.TipoCuestionarioId),
-                        Revisadores = new UsuarioRN().ListarUsuariosRevisadores(cuestionario.Id)
+                Cuestionario temp = toCuestionario(cuestionario);
+                temp.Revisadores = _data.listarRevisadores(cuestionario.Id);
 
-                    }
-                    );
+                resultado.Add(temp);
             }
 
             return resultado;
@@ -130,20 +140,8 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             if (result != null)
             {
-                Cuestionario nuevoItem = new Cuestionario()
-                {
-                    Id = result.Id,
-                    Codigo = result.Codigo,
-                    Nombre = result.Nombre,
-                    Descripcion = result.Descripcion,
-                    Activo = result.Activo,
-                    FechaCreacion = DateTime.Now,
-                    Vencimiento = result.FechaVencimiento,
-                    Tipo = result.TipoCuestionario.Nombre,
-                    Oficina = _data.ObtenerOficina(result.OficinaId),
-                    Link = ""
-                };
-                return nuevoItem;
+                return toCuestionario(result);
+
             }
 
             return null;
@@ -155,23 +153,14 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             if (result != null)
             {
-                Cuestionario nuevoItem = new Cuestionario()
-                {
-                    Id = result.Id,
-                    Codigo = result.Codigo,
-                    Nombre = result.Nombre,
-                    Descripcion = result.Descripcion,
-                    Activo = result.Activo,
-                    FechaCreacion = DateTime.Now,
-                    Vencimiento = result.FechaVencimiento,
-                };
-
-
+                Cuestionario cargado = toCuestionario(result);
+              
                 //Se deben cargar todas las preguntas
                 PreguntaRN preguntaRN = new PreguntaRN();
-                nuevoItem.Preguntas = preguntaRN.ListarPreguntas(nuevoItem.Id);
+                cargado.Preguntas = preguntaRN.ListarPreguntas(cargado.Id);
+                cargado.Revisadores = _data.listarRevisadores(cargado.Id);
 
-                return nuevoItem;
+                return cargado;
             }
 
             return null;

@@ -1,7 +1,7 @@
 ﻿using Cuestionarios.Domain;
 using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.EntitiesAD;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,8 +29,7 @@ namespace CuestionariosOIJ.ReglasNegocio
             {
                 TextoRespuesta = respuesta.TextoRespuesta,
                 FechaRespondida = DateTime.Now,
-                PreguntaId = respuesta.PreguntaRespondida.Id,
-                UsuarioId = respuesta.Encuestado,
+                PreguntaId = respuesta.PreguntaRespondida.Id
             };
 
             int id = _data.InsertarRespuesta(nuevoItem);
@@ -78,7 +77,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Pregunta.Id,
                         ContenidoPregunta = item.Pregunta.TextoPregunta
                         },
-                        Encuestado = item.UsuarioId,
+                        Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
                 );
@@ -107,7 +106,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                             Id = item.Pregunta.Id,
                             ContenidoPregunta = item.Pregunta.TextoPregunta
                         },
-                        Encuestado = item.UsuarioId,
+                        Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
                 );
@@ -131,7 +130,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Id,
                         TextoRespuesta = item.TextoRespuesta,
                         TipoRespuesta = item.Pregunta.TipoPregunta.Nombre,
-                        Encuestado = item.UsuarioId,
+                        Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
                 );

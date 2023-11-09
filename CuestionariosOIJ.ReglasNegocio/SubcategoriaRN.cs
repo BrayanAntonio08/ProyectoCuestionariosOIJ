@@ -1,7 +1,7 @@
 ﻿using Cuestionarios.Domain;
 using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.EntitiesAD;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 
 namespace CuestionariosOIJ.ReglasNegocio
 {
@@ -15,16 +15,16 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data = new SubcategoriaData(new CuestionariosContext());
         }
 
-        public void InsertarCategoria(Subcategoria subcategoria)
+        public Subcategoria InsertarSubcategoria(Subcategoria subcategoria)
         {
             SubcategoriaEF nuevoItem = new SubcategoriaEF()
             {
                 Nombre = subcategoria.Nombre,
-                Descripcion = subcategoria.Descripcion,
                 CategoriaId = subcategoria.Categoria.Id
             };
 
-            _data.InsertarSubcategoria(nuevoItem);
+            subcategoria.Id = _data.InsertarSubcategoria(nuevoItem);
+            return subcategoria;
         }
 
         public void ActualizarSubcategoria(Subcategoria subcategoria)
@@ -33,7 +33,6 @@ namespace CuestionariosOIJ.ReglasNegocio
             {
                 Id = subcategoria.Id,
                 Nombre = subcategoria.Nombre,
-                Descripcion = subcategoria.Descripcion,
                 CategoriaId = subcategoria.Categoria.Id,
             };
 
@@ -62,7 +61,6 @@ namespace CuestionariosOIJ.ReglasNegocio
                     { 
                         Id = item.Id,
                         Nombre = item.Nombre,
-                        Descripcion = item.Descripcion,
                         Categoria = categoriaRN.ObtenerPorID(item.CategoriaId)
                     }
                     );
@@ -71,14 +69,16 @@ namespace CuestionariosOIJ.ReglasNegocio
             return resultado;
         }
 
-        public Subcategoria ObtenerPorID(int id)
+        public Subcategoria? ObtenerPorID(int? id)
         {
+            if (id == null)
+                return null;
+
             SubcategoriaEF item = _data.ObtenerSubcategoriaPorID(id);
             return new Subcategoria()
                 {
                     Id = item.Id,
                     Nombre = item.Nombre,
-                    Descripcion = item.Descripcion,
                     Categoria = new CategoriaRN().ObtenerPorID(item.CategoriaId)
                 };
         }

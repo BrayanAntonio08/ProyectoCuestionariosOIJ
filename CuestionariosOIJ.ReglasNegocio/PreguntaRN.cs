@@ -1,7 +1,7 @@
 ﻿using Cuestionarios.Domain;
 using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.EntitiesAD;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,23 +19,33 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data = new PreguntaData(new CuestionariosContext());
         }
 
+        private PreguntaEF toPreguntaEF(Pregunta pregunta)
+        {
+            int cuestId = pregunta.Cuestionario != null? pregunta.Cuestionario.Id : 0;
+            int? catId = pregunta.Categoria != null ? pregunta.Categoria.Id : null;
+            int? subcatId = pregunta.Subcategoria != null ? pregunta.Subcategoria.Id : null;
+            int tipoId = _data.BuscarTipoPreguntaPorNombre(pregunta.TipoRespuesta);
+            return new PreguntaEF()
+            {
+                Id = pregunta.Id,
+                CategoriaId = catId,
+                SubcategoriaId = subcatId,
+                CuestionarioId = cuestId,
+                Eliminado = false,
+                Etiqueta = pregunta.Etiqueta,
+                Justificacion = pregunta.Justificacion,
+                Posicion = pregunta.Posicion,
+                Obligatoria = pregunta.Obligatoria,
+                TextoPregunta = pregunta.ContenidoPregunta,
+                TipoPreguntaId = tipoId
+            };
+        }
         public Pregunta InsertarPregunta(Pregunta pregunta)
         {
             int posicion = _data.ObtenerUltimaPosicion(pregunta.Cuestionario.Id);
 
             // Crea un nuevo objeto PreguntaEF
-            PreguntaEF nuevoItem = new PreguntaEF()
-            {
-                CategoriaId = pregunta.Categoria.Id,
-                Justificacion = pregunta.Justificacion,
-                CuestionarioId = pregunta.Cuestionario.Id,
-                Etiqueta = pregunta.Etiqueta,
-                Obligatoria = pregunta.Obligatoria,
-                SubcategoriaId = pregunta.Subcategoria.Id,
-                TipoPreguntaId = _data.BuscarTipoPreguntaPorNombre(pregunta.TipoRespuesta),
-                TextoPregunta = pregunta.ContenidoPregunta,
-                Posicion = posicion,
-            };
+            PreguntaEF nuevoItem = toPreguntaEF(pregunta);
 
             pregunta.Id = _data.InsertarPregunta(nuevoItem);
             return pregunta;
@@ -73,11 +83,11 @@ namespace CuestionariosOIJ.ReglasNegocio
         {
             Pregunta resultado = new Pregunta();
             resultado.Id = item.Id;
-            resultado.Categoria = new CategoriaRN().ObtenerPorID((int)item.CategoriaId);
+            resultado.Categoria = new CategoriaRN().ObtenerPorID(item.CategoriaId);
             resultado.Justificacion = item.Justificacion;
             resultado.Etiqueta = item.Etiqueta;
             resultado.Obligatoria = item.Obligatoria;
-            resultado.Subcategoria = new SubcategoriaRN().ObtenerPorID((int)item.SubcategoriaId);
+            resultado.Subcategoria = new SubcategoriaRN().ObtenerPorID(item.SubcategoriaId);
             resultado.TipoRespuesta = item.TipoPregunta.Nombre;
             resultado.ContenidoPregunta = item.TextoPregunta;
             resultado.Posicion = item.Posicion;

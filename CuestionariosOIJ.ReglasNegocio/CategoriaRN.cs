@@ -1,7 +1,7 @@
 ﻿using Cuestionarios.Domain;
 using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.EntitiesAD;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +18,15 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data = new CategoriaData(new CuestionariosContext());
         }
 
-        public void InsertarCategoria(Categoria categoria)
+        public Categoria InsertarCategoria(Categoria categoria)
         {
             CategoriaEF nuevoItem = new CategoriaEF()
             {
-                Nombre = categoria.Nombre,
-                Descripcion = categoria.Descripcion,
+                Nombre = categoria.Nombre
             };
 
-            _data.InsertarCategoria(nuevoItem);
+            categoria.Id = _data.InsertarCategoria(nuevoItem);
+            return categoria;
         }
 
         public void ActualizarCategoria(Categoria categoria)
@@ -34,8 +34,7 @@ namespace CuestionariosOIJ.ReglasNegocio
             CategoriaEF nuevoItem = new CategoriaEF()
             {
                 Id = categoria.Id,
-                Nombre = categoria.Nombre,
-                Descripcion = categoria.Descripcion,
+                Nombre = categoria.Nombre
             };
 
             _data.ActualizarCategoria(nuevoItem);
@@ -61,8 +60,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                     new Categoria()
                     {
                         Id = item.Id,
-                        Nombre = item.Nombre,
-                        Descripcion = item.Descripcion
+                        Nombre = item.Nombre
                     }
                     );
             }
@@ -70,8 +68,11 @@ namespace CuestionariosOIJ.ReglasNegocio
             return resultado;
         }
 
-        public Categoria ObtenerPorID(int id)
+        public Categoria? ObtenerPorID(int? id)
         {
+            if (id == null)
+                return null;
+
             CategoriaEF result = _data.ObtenerCategoriaPorID(id);
 
             if(result != null)
@@ -79,8 +80,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                 Categoria respuesta = new Categoria()
                 {
                     Id = result.Id,
-                    Nombre = result.Nombre,
-                    Descripcion = result.Descripcion == null? "":result.Descripcion.ToString()
+                    Nombre = result.Nombre
                 };
 
                 return respuesta;
@@ -98,8 +98,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                 Categoria respuesta = new Categoria()
                 {
                     Id = result.Id,
-                    Nombre = result.Nombre,
-                    Descripcion = result.Descripcion == null ? "" : result.Descripcion.ToString()
+                    Nombre = result.Nombre
                 };
 
                 return respuesta;

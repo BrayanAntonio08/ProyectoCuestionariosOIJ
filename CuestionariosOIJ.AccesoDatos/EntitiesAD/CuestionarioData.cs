@@ -1,6 +1,7 @@
 ﻿
 using CuestionariosOIJ.AccesoDatos.Context;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -36,6 +37,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public string ObtenerOficina(int oficinaId)
         {
+
             return _db.Oficinas.Where(tipo => tipo.Id == oficinaId).First().Nombre;
         }
 
@@ -43,9 +45,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
         {
             OficinaEF of = new OficinaEF()
             {
-                Nombre = nombreOficina,
-                Eliminado = false,
-                Codigo = "0000"
+                Nombre = nombreOficina
             };
             _db.Oficinas.Add(of);
             _db.SaveChanges();
@@ -84,8 +84,11 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public void InsertarRevisador(CuestionarioEF cuestionario, string nombreusuario)
         {
-            UsuarioEF usuario = _db.Usuarios.Where(user => user.NombreUsuario.Equals(nombreusuario)).First();
-            _db.Cuestionarios.Find(cuestionario.Id).Revisadores.Add(usuario);
+            _db.RevisadoresCuestionarios.Add(new RevisadorCuestionarioEF()
+            {
+                CuestionarioId = cuestionario.Id,
+                Revisador = nombreusuario
+            });
             _db.SaveChanges();
         }
 
@@ -148,8 +151,9 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public CuestionarioEF ObtenerPorCodigo(string codigo)
         {
-            CuestionarioEF cuest =  _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo).First();
-            cuest.TipoCuestionario = _db.TipoCuestionarios.Find(cuest.TipoCuestionarioId);
+            CuestionarioEF cuest =  _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo && !cuest.Eliminado).FirstOrDefault();
+            if(cuest != null)
+                cuest.TipoCuestionario = _db.TipoCuestionarios.Find(cuest.TipoCuestionarioId);
             return cuest;
         }
 
@@ -168,9 +172,25 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return _db.Cuestionarios.Where(cuest => cuest.Nombre.Equals(nombre)).ToList();
         }
 
-        public List<CuestionarioEF> ListarParaRevisador(UsuarioEF revisador)
+        public List<CuestionarioEF> ListarParaRevisador(string revisador)
         {
-            return revisador.Cuestionarios.ToList();
+            var query = from c in _db.Cuestionarios
+                        join rc in _db.RevisadoresCuestionarios on c.Id equals rc.CuestionarioId
+                        where rc.Revisador == revisador
+                        select c;
+
+            
+            return query.ToList();
+        }
+
+        public List<string> listarRevisadores(int cuestionarioID)
+        {
+            var query = from c in _db.Cuestionarios
+                        join rc in _db.RevisadoresCuestionarios on c.Id equals rc.CuestionarioId
+                        where rc.CuestionarioId == cuestionarioID
+                        select rc.Revisador;
+
+            return query.ToList();
         }
     }
 }

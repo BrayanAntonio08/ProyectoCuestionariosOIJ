@@ -21,7 +21,7 @@ namespace CuestionariosOIJ.API.Controllers
 
             // Guardar la categoria
             CuestionarioRN business = new CuestionarioRN();
-            business.InsertarCuestionario(cuestionario);
+            cuestionario = business.InsertarCuestionario(cuestionario);
 
             // Devolver una respuesta exitosa
             return await Task.FromResult(Ok(cuestionario));
@@ -77,5 +77,14 @@ namespace CuestionariosOIJ.API.Controllers
 
             return await Task.FromResult(Ok(cuestionarioId)); ;
         }
+
+        [HttpGet("Reporte/{cuestionarioId}")]
+        public async Task<ActionResult<List<object>>> ReporteCuestionario(int cuestionarioId)
+        {
+            ReporteRN business = new ReporteRN();
+
+            return await Task.FromResult(Ok(business.Reporte(cuestionarioId))); ;
+        }
+
     }
 }

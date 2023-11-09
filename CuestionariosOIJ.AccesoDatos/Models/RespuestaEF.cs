@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CuestionariosOIJ.API.Models
+namespace CuestionariosOIJ.AccesoDatos.Models
 {
     public partial class RespuestaEF
     {
@@ -15,10 +15,10 @@ namespace CuestionariosOIJ.API.Models
         public DateTime FechaRespondida { get; set; }
         public DateTime? FechaEliminada { get; set; }
         public int PreguntaId { get; set; }
-        public int? UsuarioId { get; set; }
 
         public virtual PreguntaEF Pregunta { get; set; } = null!;
-        public virtual UsuarioEF? Usuario { get; set; }
+        public virtual JustiicacionRespuestaEF? JustiicacionRespuesta { get; set; }
+        public virtual UsuarioRespuestaEF? UsuarioRespuesta { get; set; }
 
         public virtual ICollection<OpcionRespuestaEF> OpcionRespuesta { get; set; }
     }

@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CuestionariosOIJ.API.Models
+namespace CuestionariosOIJ.AccesoDatos.Models
 {
     public partial class OpcionRespuestaEF
     {
         public OpcionRespuestaEF()
         {
-            Respuesta = new HashSet<RespuestaEF>();
+            Respuestas = new HashSet<RespuestaEF>();
         }
 
         public int Id { get; set; }
@@ -16,6 +16,6 @@ namespace CuestionariosOIJ.API.Models
 
         public virtual PreguntaEF Pregunta { get; set; } = null!;
 
-        public virtual ICollection<RespuestaEF> Respuesta { get; set; }
+        public virtual ICollection<RespuestaEF> Respuestas { get; set; }
     }
 }

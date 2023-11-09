@@ -1,5 +1,5 @@
 ﻿using CuestionariosOIJ.AccesoDatos.Context;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,16 +20,16 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public int Insertar(OpcionRespuestaEF opcionRespuesta)
         {
-            IEnumerable<OpcionRespuestaEF> exist = _db.OpcionRespuesta.
+            IEnumerable<OpcionRespuestaEF> exist = _db.OpcionesRespuesta.
                 Where(x =>
                     x.TextoOpcion.Equals(opcionRespuesta.TextoOpcion)
                     && x.PreguntaId == opcionRespuesta.PreguntaId);
             if (exist.Count() == 0)
             {
-                _db.OpcionRespuesta.Add(opcionRespuesta);
+                _db.OpcionesRespuesta.Add(opcionRespuesta);
                 _db.SaveChanges();
 
-                return _db.OpcionRespuesta.
+                return _db.OpcionesRespuesta.
                 Where(x =>
                     x.TextoOpcion.Equals(opcionRespuesta.TextoOpcion)
                     && x.PreguntaId == opcionRespuesta.PreguntaId).First().Id;
@@ -39,26 +39,26 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public void Actualizar(OpcionRespuestaEF opcionRespuesta)
         {
-            _db.OpcionRespuesta.Update(opcionRespuesta);
+            _db.OpcionesRespuesta.Update(opcionRespuesta);
             _db.SaveChanges();
         }
 
         public void Eliminar(OpcionRespuestaEF opcionRespuesta)
         {
-            _db.OpcionRespuesta.Remove(opcionRespuesta);
+            _db.OpcionesRespuesta.Remove(opcionRespuesta);
             _db.SaveChanges();
         }
 
         public List<OpcionRespuestaEF> Listar(int preguntaId)
         {
-            return _db.OpcionRespuesta.
+            return _db.OpcionesRespuesta.
                 Where(aux => aux.Pregunta.Id == preguntaId).
                 ToList();
         }
 
         public OpcionRespuestaEF ObtenerPorID(int id)
         {
-            return _db.OpcionRespuesta.Find(id);
+            return _db.OpcionesRespuesta.Find(id);
         }
     }
 }
