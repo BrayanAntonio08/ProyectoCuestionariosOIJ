@@ -11,14 +11,17 @@ namespace Cuestionarios.Domain
         
         private List<Reporte> _reportesPreguntas;
         private Cuestionario _cuestionarioRespondido;
+        private DateTime? _periodo;
 
-        internal List<Reporte> ReportesPreguntas { get => _reportesPreguntas; set => _reportesPreguntas = value; }
-        internal Cuestionario CuestionarioRespondido { get => _cuestionarioRespondido; set => _cuestionarioRespondido = value; }
+        public List<Reporte> ReportesPreguntas { get => _reportesPreguntas; set => _reportesPreguntas = value; }
+        public Cuestionario CuestionarioRespondido { get => _cuestionarioRespondido; set => _cuestionarioRespondido = value; }
+        public DateTime? Periodo { get => _periodo; set => _periodo = value; }
 
         public ResultadoCuestionario(Cuestionario cuestionarioRespondido)
         {
             ReportesPreguntas = new List<Reporte>();
             CuestionarioRespondido = cuestionarioRespondido;
+            Periodo = null;
         }
     }
 }

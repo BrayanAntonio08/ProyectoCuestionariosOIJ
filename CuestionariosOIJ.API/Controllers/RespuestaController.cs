@@ -57,21 +57,17 @@ namespace CuestionariosOIJ.API.Controllers
         }
 
 
-        [HttpPut(Name = "BorrarRespuestasCuestionario")]
-        public async Task<ActionResult> BorrarRespuestasCuestionario([FromBody] Cuestionario cuestionario)
+        [HttpDelete("BorrarRespuestas/{cuestionarioId}")]
+        public async Task<ActionResult> BorrarRespuestasCuestionario(int cuestionarioId)
         {
-            // Validar los datos recibidos
-            if (cuestionario == null || cuestionario.Id == null)
-            {
-                return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
-            }
-
+            
             // Guardar la categoria
             RespuestaRN business = new RespuestaRN();
-            business.BorrarRespuestasCuestionario(cuestionario);
+            business.BorrarRespuestasCuestionario(cuestionarioId);
 
             return await Task.FromResult(Ok()); ;
         }
+
         [HttpDelete(Name = "EliminarRespuesta")]
         public async Task<ActionResult> EliminarRespuesta([FromBody] Respuesta respuesta)
         {

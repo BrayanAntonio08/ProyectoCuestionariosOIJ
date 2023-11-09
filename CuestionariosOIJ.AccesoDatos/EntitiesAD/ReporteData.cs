@@ -18,7 +18,51 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         internal DataBaseManager DbManager { get => _dbManager; set => _dbManager = value; }
 
-        public List<object>? ReporteSeleccionUnica(int preguntaID)
+        public List<DateTime> ListarPeriodos (int cuestionarioId)
+        {
+            this.DbManager = new DataBaseManager()
+            {
+                DbName = "db_cuestionarios",
+                SpName = "sp_obtener_fechas_eliminacion_por_cuestionario",
+                Scalar = false,
+                TableName = "Reporte"
+            };
+            this.DbManager.addParameter("@CuestionarioID", "int", cuestionarioId);
+
+            DbManager.ExecuteQuery(ref _dbManager);
+
+            if (DbManager.ErrorMessage.Length > 0)
+            {
+                throw new Exception(DbManager.ErrorMessage);
+            }
+
+
+            // Acceder a los resultados en el DataSet
+            DataSet dsResults = this.DbManager.DsResults;
+            List<DateTime> periodos = new List<DateTime>();
+
+            if (dsResults != null && dsResults.Tables.Contains("Reporte"))
+            {
+                DataTable resultTable = dsResults.Tables["Reporte"];
+
+                // Recorrer las filas del resultado
+                foreach (DataRow row in resultTable.Rows)
+                {
+                    int dia = Convert.ToInt32(row["Dia"]);
+                    int mes = Convert.ToInt32(row["Mes"]);
+                    int anio = Convert.ToInt32(row["Anio"]);
+
+                    periodos.Add(new DateTime(
+                            anio,
+                            mes,
+                            dia
+                        ));
+                }
+            }
+            return periodos;
+        }
+
+        public List<object>? ReporteSeleccionUnica(int preguntaID, DateTime? periodo)
         {
             //Crear el gestor y establecer informacion de control
             this.DbManager = new DataBaseManager()
@@ -31,6 +75,20 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
             //definir parametros
             this.DbManager.addParameter("@preguntaId", "int", preguntaID);
+            string periodoString;
+            if (periodo != null)
+            {
+                DateTime date = periodo.Value;
+                periodoString = $"{date.Day}/{date.Month}/{date.Year}";
+            }
+            else
+            {
+                periodoString = ""; //significa null
+            }
+
+            Console.WriteLine(periodoString);
+            this.DbManager.addParameter("@periodo", "datetime", periodoString);
+
 
             DbManager.ExecuteQuery(ref _dbManager);
 
@@ -69,7 +127,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return null;
         }
 
-        public List<object>? ReporteSeleccionMultiple(int preguntaID)
+        public List<object>? ReporteSeleccionMultiple(int preguntaID, DateTime? periodo)
         {
             //Crear el gestor y establecer informacion de control
             this.DbManager = new DataBaseManager()
@@ -82,6 +140,19 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
             //definir parametros
             this.DbManager.addParameter("@preguntaId", "int", preguntaID);
+            string periodoString;
+            if (periodo != null)
+            {
+                DateTime date = periodo.Value;
+                periodoString = $"{date.Day}/{date.Month}/{date.Year}";
+            }
+            else
+            {
+                periodoString = ""; //significa null
+            }
+
+            Console.WriteLine(periodoString);
+            this.DbManager.addParameter("@periodo", "datetime", periodoString);
 
             DbManager.ExecuteQuery(ref _dbManager);
 
@@ -118,7 +189,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return null;
         }
 
-        public List<object>? ReporteTexto(int preguntaID)
+        public List<object>? ReporteTexto(int preguntaID, DateTime? periodo)
         {
             //Crear el gestor y establecer informacion de control
             this.DbManager = new DataBaseManager()
@@ -131,6 +202,20 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
             //definir parametros
             this.DbManager.addParameter("@preguntaId", "int", preguntaID);
+
+            string periodoString;
+            if (periodo != null)
+            {
+                DateTime date = periodo.Value;
+                periodoString = $"{date.Day}/{date.Month}/{date.Year}";
+            }
+            else
+            {
+                periodoString = ""; //significa null
+            }
+
+            Console.WriteLine(periodoString);
+            this.DbManager.addParameter("@periodo", "datetime", periodoString);
 
             DbManager.ExecuteQuery(ref _dbManager);
 
@@ -165,7 +250,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return null;
         }
 
-        public List<object>? ReporteVerdaderoFalso(int preguntaID)
+        public List<object>? ReporteVerdaderoFalso(int preguntaID, DateTime? periodo)
         {
             //Crear el gestor y establecer informacion de control
             this.DbManager = new DataBaseManager()
@@ -178,7 +263,21 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
             //definir parametros
             this.DbManager.addParameter("@preguntaId", "int", preguntaID);
+            string periodoString;
+            if (periodo != null)
+            {
+                DateTime date = periodo.Value;
+                periodoString = $"{date.Day}/{date.Month}/{date.Year}";
+            }
+            else
+            {
+                periodoString = ""; //significa null
+            }
 
+            Console.WriteLine(periodoString);
+            this.DbManager.addParameter("@periodo", "datetime", periodoString);
+
+            //Ejecutar la consulta
             DbManager.ExecuteQuery(ref _dbManager);
 
             if (DbManager.ErrorMessage.Length > 0)
@@ -214,7 +313,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return null;
         }
 
-        public object? ReporteEscala(int preguntaID)
+        public object? ReporteEscala(int preguntaID, DateTime? periodo)
         {
             //Crear el gestor y establecer informacion de control
             this.DbManager = new DataBaseManager()
@@ -227,6 +326,19 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
             //definir parametros
             this.DbManager.addParameter("@preguntaId", "int", preguntaID);
+            string periodoString;
+            if (periodo != null)
+            {
+                DateTime date = periodo.Value;
+                periodoString = $"{date.Day}/{date.Month}/{date.Year}";
+            }
+            else
+            {
+                periodoString = ""; //significa null
+            }
+
+            Console.WriteLine(periodoString);
+            this.DbManager.addParameter("@periodo", "datetime", periodoString);
 
             DbManager.ExecuteQuery(ref _dbManager);
 
@@ -264,7 +376,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return null;
         }
 
-        public List<object>? ReporteListaEscala(int preguntaID)
+        public List<object>? ReporteListaEscala(int preguntaID, DateTime? periodo)
         {
             //Crear el gestor y establecer informacion de control
             this.DbManager = new DataBaseManager()
@@ -277,7 +389,21 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
             //definir parametros
             this.DbManager.addParameter("@preguntaId", "int", preguntaID);
+            string periodoString;
+            if (periodo != null)
+            {
+                DateTime date = periodo.Value;
+                periodoString = $"{date.Day}/{date.Month}/{date.Year}";
+            }
+            else
+            {
+                periodoString = ""; //significa null
+            }
 
+            Console.WriteLine(periodoString);
+            this.DbManager.addParameter("@periodo", "datetime", periodoString);
+
+            //Ejecutar la consulta
             DbManager.ExecuteQuery(ref _dbManager);
 
             if (DbManager.ErrorMessage.Length > 0)

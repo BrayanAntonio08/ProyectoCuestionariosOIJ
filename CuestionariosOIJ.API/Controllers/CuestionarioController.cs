@@ -84,7 +84,7 @@ namespace CuestionariosOIJ.API.Controllers
             ReporteRN business = new ReporteRN();
 
             return await Task.FromResult(Ok(business.Reporte(cuestionarioId))); ;
-        }
 
+        }
     }
 }

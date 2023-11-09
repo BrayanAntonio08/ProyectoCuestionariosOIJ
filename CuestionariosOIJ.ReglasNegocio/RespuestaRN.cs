@@ -40,13 +40,12 @@ namespace CuestionariosOIJ.ReglasNegocio
             }
         }
 
-        public void BorrarRespuestasCuestionario(Cuestionario cuestionario) {
-            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario.Id);
+        public void BorrarRespuestasCuestionario(int cuestionario) {
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario);
             List<RespuestaEF> respuestas = _data.ListarRespuestas(cuestionarioEF);
             foreach (var respuesta in respuestas)
             {
-                respuesta.FechaRespondida = DateTime.Now;
-                _data.ActualizarRespuesta(respuesta);
+                RespuestaEF resultado = _data.EliminarRespuesta(respuesta.Id);
             }
         }
 

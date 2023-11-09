@@ -60,6 +60,15 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             _db.SaveChanges();
         }
 
+        public RespuestaEF EliminarRespuesta(int respuestaId)
+        {
+
+            _db.Respuestas.Find(respuestaId).FechaEliminada = DateTime.Now;
+            _db.SaveChanges();
+            return _db.Respuestas.Find(respuestaId);
+
+        }
+
         public void EliminarRespuesta(RespuestaEF respuesta)
         {
             _db.Respuestas.Remove(respuesta);
