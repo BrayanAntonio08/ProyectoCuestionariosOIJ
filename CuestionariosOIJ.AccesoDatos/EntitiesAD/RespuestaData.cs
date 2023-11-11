@@ -54,6 +54,17 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
                 throw new Exception(DbManager.ErrorMessage);
             }
         }
+
+        public void AsignarEncuestado(int respuestaId, string encuestado)
+        {
+            _db.UsuariosRespuesta.Add(new UsuarioRespuestaEF()
+            {
+                RespuestaId = respuestaId,
+                Usuario = encuestado
+            });
+            _db.SaveChanges();
+        }
+
         public void ActualizarRespuesta(RespuestaEF respuesta)
         {
             _db.Respuestas.Update(respuesta);

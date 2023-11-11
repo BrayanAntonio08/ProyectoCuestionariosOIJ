@@ -44,19 +44,23 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             if (dsResults != null && dsResults.Tables.Contains("Reporte"))
             {
                 DataTable resultTable = dsResults.Tables["Reporte"];
+                if (resultTable != null)
+                {
+                    int cantidadFilas = resultTable.Rows.Count;
+                    Console.WriteLine($"La DataTable tiene {cantidadFilas} filas.");
+                }
 
                 // Recorrer las filas del resultado
                 foreach (DataRow row in resultTable.Rows)
                 {
-                    int dia = Convert.ToInt32(row["Dia"]);
-                    int mes = Convert.ToInt32(row["Mes"]);
-                    int anio = Convert.ToInt32(row["Anio"]);
+                    if (!Convert.IsDBNull(row["Dia"]) && !Convert.IsDBNull(row["Mes"]) && !Convert.IsDBNull(row["Anio"]))
+                    {
+                        int dia = Convert.ToInt32(row["Dia"]);
+                        int mes = Convert.ToInt32(row["Mes"]);
+                        int anio = Convert.ToInt32(row["Anio"]);
 
-                    periodos.Add(new DateTime(
-                            anio,
-                            mes,
-                            dia
-                        ));
+                        periodos.Add(new DateTime(anio, mes, dia));
+                    }
                 }
             }
             return periodos;

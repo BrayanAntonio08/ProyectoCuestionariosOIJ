@@ -91,6 +91,15 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             });
             _db.SaveChanges();
         }
+        public void RemoverRevisador(int cuestionarioId, string nombreUsuario)
+        {
+            _db.RevisadoresCuestionarios.Remove(new RevisadorCuestionarioEF()
+            {
+                CuestionarioId = cuestionarioId,
+                Revisador = nombreUsuario
+            });
+            _db.SaveChanges();
+        }
 
         public OficinaEF leerOficina(string nombreOficina)
         {

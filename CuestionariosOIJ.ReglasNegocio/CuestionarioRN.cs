@@ -106,6 +106,20 @@ namespace CuestionariosOIJ.ReglasNegocio
 
             _data.ActualizarCuestionario(actualizado);
 
+            List<string> revisadoresActuales = _data.listarRevisadores(cuestionario.Id);
+
+            foreach (string revisador in cuestionario.Revisadores)
+            {
+                //agregar a nuevos
+                if(!revisadoresActuales.Contains(revisador))
+                    _data.InsertarRevisador(actualizado, revisador);
+            }
+            foreach(string actual in revisadoresActuales)
+            {
+                //borrar los que ya no estén
+                if (!cuestionario.Revisadores.Contains(actual))
+                    _data.RemoverRevisador(cuestionario.Id, actual);
+            }
         }
 
         public void EliminarCuestionario(int cuestionarioId)
@@ -118,7 +132,7 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.Eliminar(itemBorrado);
         }
 
-        public List<Cuestionario> ListarCuestionario()
+        public List<Cuestionario> ListarCuestionario(string oficina)
         {
             List<Cuestionario> resultado = new List<Cuestionario>();
 
@@ -128,7 +142,27 @@ namespace CuestionariosOIJ.ReglasNegocio
                 Cuestionario temp = toCuestionario(cuestionario);
                 temp.Revisadores = _data.listarRevisadores(cuestionario.Id);
 
-                resultado.Add(temp);
+                if(temp.Oficina.Contains(oficina))
+                    resultado.Add(temp);
+            }
+
+            return resultado;
+        }
+
+        public List<Cuestionario> ListarCuestionariosRevisador(string revisador)
+        {
+            List<Cuestionario> resultado = new List<Cuestionario>();
+
+            List<CuestionarioEF> itemsGuardados = _data.Listar();
+            foreach (var cuestionario in itemsGuardados.Where(x => x.Eliminado == false))
+            {
+                Cuestionario temp = toCuestionario(cuestionario);
+                temp.Revisadores = _data.listarRevisadores(cuestionario.Id);
+
+                if (temp.Revisadores.Any(x => x == revisador))
+                {
+                    resultado.Add(temp);
+                }
             }
 
             return resultado;

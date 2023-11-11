@@ -54,19 +54,8 @@ namespace CuestionariosOIJ.ReglasNegocio
         public void ActualizarPregunta(int cuestionarioId, Pregunta pregunta)
         {
 
-            PreguntaEF nuevoItem = new PreguntaEF()
-            {
-                Id = pregunta.Id,
-                CategoriaId = pregunta.Categoria.Id,
-                Justificacion = pregunta.Justificacion,
-                Etiqueta = pregunta.Etiqueta,
-                Obligatoria = pregunta.Obligatoria,
-                SubcategoriaId = pregunta.Subcategoria.Id,
-                TipoPreguntaId = _data.BuscarTipoPreguntaPorNombre(pregunta.TipoRespuesta),
-                TextoPregunta = pregunta.ContenidoPregunta,
-                Posicion = pregunta.Posicion,
-                CuestionarioId = cuestionarioId
-            };
+            PreguntaEF nuevoItem = toPreguntaEF(pregunta);
+            nuevoItem.CuestionarioId = cuestionarioId;
 
             _data.ActualizarPregunta(nuevoItem);
         }

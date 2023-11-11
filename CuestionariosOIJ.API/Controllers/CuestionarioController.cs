@@ -27,11 +27,20 @@ namespace CuestionariosOIJ.API.Controllers
             return await Task.FromResult(Ok(cuestionario));
         }
 
-        [HttpGet(Name = "ListarCuestionarios")]
-        public async Task<ActionResult<List<Cuestionario>>> ListarCuestionarios()
+        [HttpGet("Oficina/{oficina}")]
+        public async Task<ActionResult<List<Cuestionario>>> ListarCuestionarios(string oficina)
         {
             CuestionarioRN business = new CuestionarioRN();
-            List<Cuestionario> cuestionarios = business.ListarCuestionario();
+            List<Cuestionario> cuestionarios = business.ListarCuestionario(oficina);
+
+            return await Task.FromResult(Ok(cuestionarios));
+        }
+
+        [HttpGet("Revisador/{revisador}")]
+        public async Task<ActionResult<List<Cuestionario>>> ListarCuestionariosRevisador(string revisador)
+        {
+            CuestionarioRN business = new CuestionarioRN();
+            List<Cuestionario> cuestionarios = business.ListarCuestionariosRevisador(revisador);
 
             return await Task.FromResult(Ok(cuestionarios));
         }

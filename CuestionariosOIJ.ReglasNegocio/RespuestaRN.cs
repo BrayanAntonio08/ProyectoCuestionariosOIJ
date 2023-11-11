@@ -38,6 +38,11 @@ namespace CuestionariosOIJ.ReglasNegocio
             {
                 _data.AgregarOpcionEscogida(opcion.Id, id);
             }
+
+            if(respuesta.Encuestado != null)
+            {
+                _data.AsignarEncuestado(id, respuesta.Encuestado);
+            }
         }
 
         public void BorrarRespuestasCuestionario(int cuestionario) {
