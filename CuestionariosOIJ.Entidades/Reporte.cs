@@ -8,20 +8,19 @@ namespace Cuestionarios.Domain
 {
     public class Reporte
     {
-        private List<ResultadoCuestionario> _resultadosCuestionario;
-
-        internal List<ResultadoCuestionario> ResultadosCuestionario { get => _resultadosCuestionario; set => _resultadosCuestionario = value; }
-
-        public Reporte(List<ResultadoCuestionario> resultadosCuestionario)
-        {
-            ResultadosCuestionario = resultadosCuestionario;
-        }
+        private int _id;
+        private string _textoPregunta, _tipoRespuesta;
+        private object? _resultadosDB; //guarda los datos de la consulta sql
 
         public Reporte()
         {
-            ResultadosCuestionario = new List<ResultadoCuestionario>();
+            TextoPregunta = string.Empty;
+            ResultadosDB = null;
         }
 
-
+        public string TextoPregunta { get => _textoPregunta; set => _textoPregunta = value; }
+        public object? ResultadosDB { get => _resultadosDB; set => _resultadosDB = value; }
+        public string TipoRespuesta { get => _tipoRespuesta; set => _tipoRespuesta = value; }
+        public int Id { get => _id; set => _id = value; }
     }
 }

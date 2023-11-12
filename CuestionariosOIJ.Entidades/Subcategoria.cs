@@ -10,30 +10,29 @@ namespace Cuestionarios.Domain
     {
         private int _id;
         private string _nombre;
-        private string _descripcion;
         private Categoria _categoria;
 
         public Subcategoria()
         {
+            _id = 0;
+            _nombre = string.Empty;
+            _categoria = new Categoria();
         }
 
-        public Subcategoria(string nombre, string descripcion, Categoria categoria)
+        public Subcategoria(string nombre, Categoria categoria)
         {
-            Nombre = nombre;
-            Descripcion = descripcion;
-            Categoria = categoria;
+            _nombre = nombre;
+            _categoria = categoria;
         }
 
-        public Subcategoria(int id, string nombre, string descripcion, Categoria categoria)
+        public Subcategoria(int id, string nombre, Categoria categoria)
         {
-            Id= id;
-            Nombre = nombre;
-            Descripcion = descripcion;
-            Categoria = categoria;
+            _id = id;
+            _nombre = nombre;
+            _categoria = categoria;
         }
 
         public string Nombre { get => _nombre; set => _nombre = value; }
-        public string Descripcion { get => _descripcion; set => _descripcion = value; }
         public Categoria Categoria { get => _categoria; set => _categoria = value; }
         public int Id { get => _id; set => _id = value; }
     }

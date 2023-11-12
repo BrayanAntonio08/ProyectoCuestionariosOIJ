@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CuestionariosOIJ.API.Models
+namespace CuestionariosOIJ.AccesoDatos.Models
 {
     public partial class CategoriaEF
     {
         public CategoriaEF()
         {
-            Pregunta = new HashSet<PreguntaEF>();
-            Subcategoria = new HashSet<SubcategoriaEF>();
+            Preguntas = new HashSet<PreguntaEF>();
+            Subcategorias = new HashSet<SubcategoriaEF>();
         }
 
         public int Id { get; set; }
         public string Nombre { get; set; } = null!;
-        public string? Descripcion { get; set; }
 
-        public virtual ICollection<PreguntaEF> Pregunta { get; set; }
-        public virtual ICollection<SubcategoriaEF> Subcategoria { get; set; }
+        public virtual ICollection<PreguntaEF> Preguntas { get; set; }
+        public virtual ICollection<SubcategoriaEF> Subcategorias { get; set; }
     }
 }

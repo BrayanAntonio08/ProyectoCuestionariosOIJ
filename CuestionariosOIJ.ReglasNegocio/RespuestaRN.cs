@@ -1,7 +1,7 @@
 ﻿using Cuestionarios.Domain;
 using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.EntitiesAD;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,26 +23,34 @@ namespace CuestionariosOIJ.ReglasNegocio
 
         public void InsertarRespuesta(Respuesta respuesta)
         {
+            
             // Crea un nuevo objeto RespuestaEF
             RespuestaEF nuevoItem = new RespuestaEF()
             {
                 TextoRespuesta = respuesta.TextoRespuesta,
                 FechaRespondida = DateTime.Now,
-                PreguntaId = respuesta.PreguntaRespondida.Id,
-                UsuarioId = respuesta.Encuestado,
+                PreguntaId = respuesta.PreguntaRespondida.Id
             };
 
-            _data.InsertarRespuesta(nuevoItem);
+            int id = _data.InsertarRespuesta(nuevoItem);
 
+            foreach (OpcionRespuesta opcion in respuesta.OpcionesEscogidas)
+            {
+                _data.AgregarOpcionEscogida(opcion.Id, id);
+            }
+
+            if(respuesta.Encuestado != null)
+            {
+                _data.AsignarEncuestado(id, respuesta.Encuestado);
+            }
         }
 
-        public void BorrarRespuestasCuestionario(Cuestionario cuestionario) {
-            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
+        public void BorrarRespuestasCuestionario(int cuestionario) {
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario);
             List<RespuestaEF> respuestas = _data.ListarRespuestas(cuestionarioEF);
             foreach (var respuesta in respuestas)
             {
-                respuesta.FechaRespondida = DateTime.Now;
-                _data.ActualizarRespuesta(respuesta);
+                RespuestaEF resultado = _data.EliminarRespuesta(respuesta.Id);
             }
         }
 
@@ -56,10 +64,10 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data.EliminarRespuesta(nuevoItem);
         }
 
-        public List<Respuesta> ListarRespuestasTotales(Cuestionario cuestionario)
+        public List<Respuesta> ListarRespuestasTotales(int cuestionario)
         {
             List<Respuesta> resultado = new List<Respuesta>();
-            CuestionarioEF cuestionarioEF = new CuestionarioData(new CuestionariosContext()).ObtenerPorID(cuestionario.Id);
+            CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario);
             List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotales(cuestionarioEF);
             foreach (var item in itemsGuardados)
             {
@@ -73,7 +81,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Pregunta.Id,
                         ContenidoPregunta = item.Pregunta.TextoPregunta
                         },
-                        Encuestado = item.UsuarioId,
+                        Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
                 );
@@ -102,7 +110,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                             Id = item.Pregunta.Id,
                             ContenidoPregunta = item.Pregunta.TextoPregunta
                         },
-                        Encuestado = item.UsuarioId,
+                        Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
                 );
@@ -126,7 +134,7 @@ namespace CuestionariosOIJ.ReglasNegocio
                         Id = item.Id,
                         TextoRespuesta = item.TextoRespuesta,
                         TipoRespuesta = item.Pregunta.TipoPregunta.Nombre,
-                        Encuestado = item.UsuarioId,
+                        Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
                 );

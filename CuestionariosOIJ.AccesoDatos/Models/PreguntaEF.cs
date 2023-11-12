@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CuestionariosOIJ.API.Models
+namespace CuestionariosOIJ.AccesoDatos.Models
 {
     public partial class PreguntaEF
     {
         public PreguntaEF()
         {
-            OpcionRespuesta = new HashSet<OpcionRespuestaEF>();
-            Respuesta = new HashSet<RespuestaEF>();
+            OpcionesRespuesta = new HashSet<OpcionRespuestaEF>();
+            Respuestas = new HashSet<RespuestaEF>();
         }
 
         public int Id { get; set; }
@@ -21,12 +21,12 @@ namespace CuestionariosOIJ.API.Models
         public int? SubcategoriaId { get; set; }
         public int TipoPreguntaId { get; set; }
         public int CuestionarioId { get; set; }
-
+        public bool Eliminado { get; set; }
         public virtual CategoriaEF? Categoria { get; set; }
         public virtual CuestionarioEF Cuestionario { get; set; } = null!;
         public virtual SubcategoriaEF? Subcategoria { get; set; }
-        public virtual TipoPregunta TipoPregunta { get; set; } = null!;
-        public virtual ICollection<OpcionRespuestaEF> OpcionRespuesta { get; set; }
-        public virtual ICollection<RespuestaEF> Respuesta { get; set; }
+        public virtual TipoPreguntaEF TipoPregunta { get; set; } = null!;
+        public virtual ICollection<OpcionRespuestaEF> OpcionesRespuesta { get; set; }
+        public virtual ICollection<RespuestaEF> Respuestas { get; set; }
     }
 }

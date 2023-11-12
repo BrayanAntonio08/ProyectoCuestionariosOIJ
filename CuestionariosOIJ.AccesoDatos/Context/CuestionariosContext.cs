@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -17,30 +17,25 @@ namespace CuestionariosOIJ.AccesoDatos.Context
         {
         }
 
-        public virtual DbSet<CategoriaEF> Categoria { get; set; } = null!;
+        public virtual DbSet<CategoriaEF> Categorias { get; set; } = null!;
         public virtual DbSet<CuestionarioEF> Cuestionarios { get; set; } = null!;
+        public virtual DbSet<JustiicacionRespuestaEF> JustiicacionesRespuesta { get; set; } = null!;
         public virtual DbSet<OficinaEF> Oficinas { get; set; } = null!;
-        public virtual DbSet<OpcionRespuestaEF> OpcionRespuesta { get; set; } = null!;
-        public virtual DbSet<PermisoEF> Permisos { get; set; } = null!;
-        public virtual DbSet<PreguntaEF> Pregunta { get; set; } = null!;
-        public virtual DbSet<RespuestaEF> Respuesta { get; set; } = null!;
-        public virtual DbSet<Rol> Rols { get; set; } = null!;
-        public virtual DbSet<SubcategoriaEF> Subcategoria { get; set; } = null!;
+        public virtual DbSet<OpcionRespuestaEF> OpcionesRespuesta { get; set; } = null!;
+        public virtual DbSet<PreguntaEF> Preguntas { get; set; } = null!;
+        public virtual DbSet<RespuestaEF> Respuestas { get; set; } = null!;
+        public virtual DbSet<RevisadorCuestionarioEF> RevisadoresCuestionarios { get; set; } = null!;
+        public virtual DbSet<SubcategoriaEF> Subcategorias { get; set; } = null!;
         public virtual DbSet<TipoCuestionarioEF> TipoCuestionarios { get; set; } = null!;
-        public virtual DbSet<TipoPregunta> TipoPregunta { get; set; } = null!;
-        public virtual DbSet<UsuarioEF> Usuarios { get; set; } = null!;
+        public virtual DbSet<TipoPreguntaEF> TiposPregunta { get; set; } = null!;
+        public virtual DbSet<UsuarioRespuestaEF> UsuariosRespuesta { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer(
-                    "workstation id=DataBaseCuestionarios.mssql.somee.com; " +
-                    "user id=BrayanVafer_SQLLogin_1; pwd=k6f8dobsfa; " +
-                    "data source=DataBaseCuestionarios.mssql.somee.com; " +
-                    "persist security info=False; " +
-                    "initial catalog=DataBaseCuestionarios;");
+                optionsBuilder.UseSqlServer("Server=163.178.107.10; Initial Catalog=DataBaseCuestionarios; Persist Security Info=False; User ID=laboratorios; Password=TUy&)&nfC7QqQau.%278UQ24/=%;");
             }
         }
 
@@ -52,10 +47,6 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(100)
                     .IsUnicode(false);
@@ -65,7 +56,7 @@ namespace CuestionariosOIJ.AccesoDatos.Context
             {
                 entity.ToTable("Cuestionario", "Cuestionarios");
 
-                entity.HasIndex(e => e.Codigo, "UQ__Cuestion__06370DAC62654E72")
+                entity.HasIndex(e => e.Codigo, "UQ__Cuestion__06370DAC9010A7B0")
                     .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("ID");
@@ -84,9 +75,7 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
                 entity.Property(e => e.FechaVencimiento).HasColumnType("datetime");
 
-                entity.Property(e => e.Eliminado)
-                    .HasColumnName("Eliminado")
-                    .HasColumnType("bit");
+                entity.Property(e => e.Eliminado).HasColumnType("bit");
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(200)
@@ -100,13 +89,35 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                     .WithMany(p => p.Cuestionarios)
                     .HasForeignKey(d => d.OficinaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cuestiona__Ofici__4D94879B");
+                    .HasConstraintName("FK__Cuestiona__Ofici__2B3F6F97");
 
                 entity.HasOne(d => d.TipoCuestionario)
                     .WithMany(p => p.Cuestionarios)
                     .HasForeignKey(d => d.TipoCuestionarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Cuestiona__TipoC__4CA06362");
+                    .HasConstraintName("FK__Cuestiona__TipoC__2A4B4B5E");
+            });
+
+            modelBuilder.Entity<JustiicacionRespuestaEF>(entity =>
+            {
+                entity.HasKey(e => e.RespuestaId)
+                    .HasName("PK__Justiica__31F7FC316BE33AB2");
+
+                entity.ToTable("Justiicacion_Respuesta", "Cuestionarios");
+
+                entity.Property(e => e.RespuestaId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("RespuestaID");
+
+                entity.Property(e => e.Justificacion)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
+                entity.HasOne(d => d.Respuesta)
+                    .WithOne(p => p.JustiicacionRespuesta)
+                    .HasForeignKey<JustiicacionRespuestaEF>(d => d.RespuestaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Justiicac__Respu__4D94879B");
             });
 
             modelBuilder.Entity<OficinaEF>(entity =>
@@ -114,11 +125,6 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                 entity.ToTable("Oficina", "Administracion");
 
                 entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Codigo)
-                    .HasMaxLength(4)
-                    .IsUnicode(false)
-                    .IsFixedLength();
 
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(100)
@@ -138,29 +144,10 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Pregunta)
-                    .WithMany(p => p.OpcionRespuesta)
+                    .WithMany(p => p.OpcionesRespuesta)
                     .HasForeignKey(d => d.PreguntaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OpcionRes__Pregu__5CD6CB2B");
-            });
-
-            modelBuilder.Entity<PermisoEF>(entity =>
-            {
-                entity.ToTable("Permiso", "Administracion");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Description)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Entity)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Type)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                    .HasConstraintName("FK__OpcionRes__Pregu__3C69FB99");
             });
 
             modelBuilder.Entity<PreguntaEF>(entity =>
@@ -180,32 +167,32 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                 entity.Property(e => e.SubcategoriaId).HasColumnName("SubcategoriaID");
 
                 entity.Property(e => e.TextoPregunta)
-                    .HasMaxLength(150)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.TipoPreguntaId).HasColumnName("TipoPreguntaID");
 
                 entity.HasOne(d => d.Categoria)
-                    .WithMany(p => p.Pregunta)
+                    .WithMany(p => p.Preguntas)
                     .HasForeignKey(d => d.CategoriaId)
-                    .HasConstraintName("FK__Pregunta__Catego__571DF1D5");
+                    .HasConstraintName("FK__Pregunta__Catego__36B12243");
 
                 entity.HasOne(d => d.Cuestionario)
-                    .WithMany(p => p.Pregunta)
+                    .WithMany(p => p.Preguntas)
                     .HasForeignKey(d => d.CuestionarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Pregunta__Cuesti__59FA5E80");
+                    .HasConstraintName("FK__Pregunta__Cuesti__398D8EEE");
 
                 entity.HasOne(d => d.Subcategoria)
-                    .WithMany(p => p.Pregunta)
+                    .WithMany(p => p.Preguntas)
                     .HasForeignKey(d => d.SubcategoriaId)
-                    .HasConstraintName("FK__Pregunta__Subcat__5812160E");
+                    .HasConstraintName("FK__Pregunta__Subcat__37A5467C");
 
                 entity.HasOne(d => d.TipoPregunta)
-                    .WithMany(p => p.Pregunta)
+                    .WithMany(p => p.Preguntas)
                     .HasForeignKey(d => d.TipoPreguntaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Pregunta__TipoPr__59063A47");
+                    .HasConstraintName("FK__Pregunta__TipoPr__38996AB5");
             });
 
             modelBuilder.Entity<RespuestaEF>(entity =>
@@ -224,28 +211,21 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                     .HasMaxLength(300)
                     .IsUnicode(false);
 
-                entity.Property(e => e.UsuarioId).HasColumnName("UsuarioID");
-
                 entity.HasOne(d => d.Pregunta)
-                    .WithMany(p => p.Respuesta)
+                    .WithMany(p => p.Respuestas)
                     .HasForeignKey(d => d.PreguntaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Respuesta__Pregu__5FB337D6");
-
-                entity.HasOne(d => d.Usuario)
-                    .WithMany(p => p.Respuesta)
-                    .HasForeignKey(d => d.UsuarioId)
-                    .HasConstraintName("FK__Respuesta__Usuar__60A75C0F");
+                    .HasConstraintName("FK__Respuesta__Pregu__3F466844");
 
                 entity.HasMany(d => d.OpcionRespuesta)
-                    .WithMany(p => p.Respuesta)
+                    .WithMany(p => p.Respuestas)
                     .UsingEntity<Dictionary<string, object>>(
                         "RespuestaOpcionRespuestum",
-                        l => l.HasOne<OpcionRespuestaEF>().WithMany().HasForeignKey("OpcionRespuestaId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Respuesta__Opcio__6477ECF3"),
-                        r => r.HasOne<RespuestaEF>().WithMany().HasForeignKey("RespuestaId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Respuesta__Respu__6383C8BA"),
+                        l => l.HasOne<OpcionRespuestaEF>().WithMany().HasForeignKey("OpcionRespuestaId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Respuesta__Opcio__47DBAE45"),
+                        r => r.HasOne<RespuestaEF>().WithMany().HasForeignKey("RespuestaId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Respuesta__Respu__46E78A0C"),
                         j =>
                         {
-                            j.HasKey("RespuestaId", "OpcionRespuestaId").HasName("PK__Respuest__640A7CCF87B1ED7F");
+                            j.HasKey("RespuestaId", "OpcionRespuestaId").HasName("PK__Respuest__640A7CCFB85AF468");
 
                             j.ToTable("Respuesta_OpcionRespuesta", "Cuestionarios");
 
@@ -255,52 +235,24 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                         });
             });
 
-            modelBuilder.Entity<Rol>(entity =>
+            modelBuilder.Entity<RevisadorCuestionarioEF>(entity =>
             {
-                entity.ToTable("Rol", "Administracion");
+                entity.HasKey(e => new { e.Revisador, e.CuestionarioId })
+                    .HasName("PK__Revisado__68332923B6A7C3F3");
 
-                entity.HasIndex(e => e.Nombre, "UQ__Rol__75E3EFCF7DC28CAA")
-                    .IsUnique();
+                entity.ToTable("Revisador_Cuestionario", "Cuestionarios");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(100)
+                entity.Property(e => e.Revisador)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
-                entity.HasMany(d => d.Permisos)
-                    .WithMany(p => p.Rols)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "RolPermiso",
-                        l => l.HasOne<PermisoEF>().WithMany().HasForeignKey("PermisoId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Rol_Permi__Permi__4316F928"),
-                        r => r.HasOne<Rol>().WithMany().HasForeignKey("RolId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Rol_Permi__RolID__4222D4EF"),
-                        j =>
-                        {
-                            j.HasKey("RolId", "PermisoId").HasName("PK__Rol_Perm__D04D0EA14568C50A");
+                entity.Property(e => e.CuestionarioId).HasColumnName("CuestionarioID");
 
-                            j.ToTable("Rol_Permiso", "Administracion");
-
-                            j.IndexerProperty<int>("RolId").HasColumnName("RolID");
-
-                            j.IndexerProperty<int>("PermisoId").HasColumnName("PermisoID");
-                        });
-
-                entity.HasMany(d => d.Usuarios)
-                    .WithMany(p => p.Rols)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "UsuarioRol",
-                        l => l.HasOne<UsuarioEF>().WithMany().HasForeignKey("UsuarioId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Usuario_R__Usuar__46E78A0C"),
-                        r => r.HasOne<Rol>().WithMany().HasForeignKey("RolId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Usuario_R__RolID__45F365D3"),
-                        j =>
-                        {
-                            j.HasKey("RolId", "UsuarioId").HasName("PK__Usuario___6B90DCA8B91B8C9D");
-
-                            j.ToTable("Usuario_Rol", "Administracion");
-
-                            j.IndexerProperty<int>("RolId").HasColumnName("RolID");
-
-                            j.IndexerProperty<int>("UsuarioId").HasColumnName("UsuarioID");
-                        });
+                entity.HasOne(d => d.Cuestionario)
+                    .WithMany(p => p.RevisadorCuestionarios)
+                    .HasForeignKey(d => d.CuestionarioId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__Revisador__Cuest__4AB81AF0");
             });
 
             modelBuilder.Entity<SubcategoriaEF>(entity =>
@@ -311,19 +263,15 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
                 entity.Property(e => e.CategoriaId).HasColumnName("CategoriaID");
 
-                entity.Property(e => e.Descripcion)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.Categoria)
-                    .WithMany(p => p.Subcategoria)
+                    .WithMany(p => p.Subcategorias)
                     .HasForeignKey(d => d.CategoriaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Subcatego__Categ__5441852A");
+                    .HasConstraintName("FK__Subcatego__Categ__33D4B598");
             });
 
             modelBuilder.Entity<TipoCuestionarioEF>(entity =>
@@ -337,7 +285,7 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<TipoPregunta>(entity =>
+            modelBuilder.Entity<TipoPreguntaEF>(entity =>
             {
                 entity.ToTable("TipoPregunta", "Cuestionarios");
 
@@ -348,63 +296,26 @@ namespace CuestionariosOIJ.AccesoDatos.Context
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<UsuarioEF>(entity =>
+            modelBuilder.Entity<UsuarioRespuestaEF>(entity =>
             {
-                entity.ToTable("Usuario", "Administracion");
+                entity.HasKey(e => e.RespuestaId)
+                    .HasName("PK__Usuario___31F7FC318D4AB363");
 
-                entity.HasIndex(e => e.NombreUsuario, "UQ__Usuario__6B0F5AE0124DB9E5")
-                    .IsUnique();
+                entity.ToTable("Usuario_Respuesta", "Cuestionarios");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.RespuestaId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("RespuestaID");
 
-                entity.Property(e => e.Contrasena)
-                    .HasMaxLength(20)
+                entity.Property(e => e.Usuario)
+                    .HasMaxLength(150)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Correo)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.NombreUsuario)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.OficinaId).HasColumnName("OficinaID");
-
-                entity.Property(e => e.PrimerApellido)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.SegundoApellido)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.Oficina)
-                    .WithMany(p => p.Usuarios)
-                    .HasForeignKey(d => d.OficinaId)
+                entity.HasOne(d => d.Respuesta)
+                    .WithOne(p => p.UsuarioRespuesta)
+                    .HasForeignKey<UsuarioRespuestaEF>(d => d.RespuestaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk_oficina_usuario");
-
-                entity.HasMany(d => d.Cuestionarios)
-                    .WithMany(p => p.Revisadores)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "RevisadorCuestionario",
-                        l => l.HasOne<CuestionarioEF>().WithMany().HasForeignKey("CuestionarioId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Revisador__Cuest__03F0984C"),
-                        r => r.HasOne<UsuarioEF>().WithMany().HasForeignKey("RevisadorId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK__Revisador__Revis__02FC7413"),
-                        j =>
-                        {
-                            j.HasKey("RevisadorId", "CuestionarioId").HasName("PK__Revisado__92BB75290CC4BA36");
-
-                            j.ToTable("Revisador_Cuestionario", "Cuestionarios");
-
-                            j.IndexerProperty<int>("RevisadorId").HasColumnName("RevisadorID");
-
-                            j.IndexerProperty<int>("CuestionarioId").HasColumnName("CuestionarioID");
-                        });
+                    .HasConstraintName("FK__Usuario_R__Respu__440B1D61");
             });
 
             OnModelCreatingPartial(modelBuilder);

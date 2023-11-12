@@ -20,14 +20,14 @@ namespace CuestionariosOIJ.API.Controllers
 
             // Guardar la pregunta
             PreguntaRN business = new PreguntaRN();
-            business.InsertarPregunta(pregunta);
+            pregunta = business.InsertarPregunta(pregunta);
 
             // Devolver una respuesta exitosa
             return await Task.FromResult(Ok(pregunta));
         }
 
-        [HttpPut(Name = "ActualizarPregunta")]
-        public async Task<ActionResult<Pregunta>> ActualizarPregunta([FromBody] Pregunta pregunta)
+        [HttpPut("{cuestionarioId}")]
+        public async Task<ActionResult<Pregunta>> ActualizarPregunta(int cuestionarioId, [FromBody] Pregunta pregunta)
         {
             // Validar los datos recibidos
             if (pregunta == null || pregunta.ContenidoPregunta == null)
@@ -37,9 +37,20 @@ namespace CuestionariosOIJ.API.Controllers
 
             // Guardar la pregunta
             PreguntaRN business = new PreguntaRN();
-            business.ActualizarPregunta(pregunta);
+            business.ActualizarPregunta(cuestionarioId, pregunta);
 
             return await Task.FromResult(Ok(pregunta));
+        }
+
+        [HttpPut("ordenar/{cuestionarioId}")]
+        public async Task<ActionResult<Pregunta>> ActualizarOrdenPreguntas(int cuestionarioId, [FromBody] List<Pregunta> preguntas)
+        {
+            // Guardar la pregunta
+            PreguntaRN business = new PreguntaRN();
+            foreach (var pregunta in preguntas)
+                business.ActualizarPregunta(cuestionarioId, pregunta);
+
+            return await Task.FromResult(Ok());
         }
 
         [HttpGet("ListarPreguntas")]
@@ -73,13 +84,13 @@ namespace CuestionariosOIJ.API.Controllers
         public async Task<ActionResult<Pregunta>> ObtenerPreguntaEn(Cuestionario cuestionario, int posicion)
         {
             PreguntaRN business = new PreguntaRN();
-            Pregunta pregunta = business.ObtenerPreguntaEn(cuestionario,posicion);
+            Pregunta pregunta = business.ObtenerPreguntaEn(cuestionario, posicion);
 
             return await Task.FromResult(Ok(pregunta));
         }
 
-        
-        [HttpDelete(Name = "EliminarPregunta")]
+
+        [HttpDelete("{pregunta}")]
         public async Task<ActionResult> EliminarPregunta(int pregunta)
         {
             PreguntaRN business = new PreguntaRN();

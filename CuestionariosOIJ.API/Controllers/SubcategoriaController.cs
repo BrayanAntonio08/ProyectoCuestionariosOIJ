@@ -20,7 +20,7 @@ namespace CuestionariosOIJ.API.Controllers
 
             // Guardar la categoria
             SubcategoriaRN business = new SubcategoriaRN();
-            business.InsertarCategoria(subcategoria);
+            subcategoria = business.InsertarSubcategoria(subcategoria);
 
             // Devolver una respuesta exitosa
             return await Task.FromResult(Ok(subcategoria));

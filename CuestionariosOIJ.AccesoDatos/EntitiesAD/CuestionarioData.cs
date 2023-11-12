@@ -1,6 +1,7 @@
 ﻿
 using CuestionariosOIJ.AccesoDatos.Context;
-using CuestionariosOIJ.API.Models;
+using CuestionariosOIJ.AccesoDatos.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,9 +19,9 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         internal DataBaseManager DbManager { get => _dbManager; set => _dbManager = value; }
 
-        public CuestionarioData(CuestionariosContext context)
+        public CuestionarioData()
         {
-            _db = context;
+            _db = new CuestionariosContext();
             _dbManager = new DataBaseManager();
         }
 
@@ -36,9 +37,19 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public string ObtenerOficina(int oficinaId)
         {
+
             return _db.Oficinas.Where(tipo => tipo.Id == oficinaId).First().Nombre;
         }
 
+        public void NuevaOficina(string nombreOficina)
+        {
+            OficinaEF of = new OficinaEF()
+            {
+                Nombre = nombreOficina
+            };
+            _db.Oficinas.Add(of);
+            _db.SaveChanges();
+        }
         public void InsertarCuestionario(CuestionarioEF cuestionario)
         {
             //Crear el gestor y establecer informacion de control
@@ -73,14 +84,26 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public void InsertarRevisador(CuestionarioEF cuestionario, string nombreusuario)
         {
-            UsuarioEF usuario = _db.Usuarios.Where(user => user.NombreUsuario.Equals(nombreusuario)).First();
-            _db.Cuestionarios.Find(cuestionario.Id).Revisadores.Add(usuario);
+            _db.RevisadoresCuestionarios.Add(new RevisadorCuestionarioEF()
+            {
+                CuestionarioId = cuestionario.Id,
+                Revisador = nombreusuario
+            });
+            _db.SaveChanges();
+        }
+        public void RemoverRevisador(int cuestionarioId, string nombreUsuario)
+        {
+            _db.RevisadoresCuestionarios.Remove(new RevisadorCuestionarioEF()
+            {
+                CuestionarioId = cuestionarioId,
+                Revisador = nombreUsuario
+            });
             _db.SaveChanges();
         }
 
         public OficinaEF leerOficina(string nombreOficina)
         {
-            return _db.Oficinas.Where(x => x.Nombre == nombreOficina).First();
+            return _db.Oficinas.Where(x => x.Nombre == nombreOficina).FirstOrDefault();
         }
 
         public TipoCuestionarioEF leerTipo(string nombreTipo)
@@ -106,7 +129,7 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             this.DbManager.addParameter("@Descripcion", "varchar", cuestionario.Descripcion);
             this.DbManager.addParameter("@Activo", "bit", cuestionario.Activo);
             this.DbManager.addParameter("@TipoCuestionarioID", "int", cuestionario.TipoCuestionarioId);
-            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime((DateTime)cuestionario.FechaVenci
+            this.DbManager.addParameter("@FechaVencimiento", "datetime", new SqlDateTime((DateTime)cuestionario.FechaVencimiento));
 
 
             //Ejercutar el procedimiento en la base de datos
@@ -137,7 +160,10 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
 
         public CuestionarioEF ObtenerPorCodigo(string codigo)
         {
-            return _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo).First();
+            CuestionarioEF cuest =  _db.Cuestionarios.Where(cuest => cuest.Codigo == codigo && !cuest.Eliminado).FirstOrDefault();
+            if(cuest != null)
+                cuest.TipoCuestionario = _db.TipoCuestionarios.Find(cuest.TipoCuestionarioId);
+            return cuest;
         }
 
         public List<CuestionarioEF> ListarPorTipo(string tipo)
@@ -155,9 +181,25 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
             return _db.Cuestionarios.Where(cuest => cuest.Nombre.Equals(nombre)).ToList();
         }
 
-        public List<CuestionarioEF> ListarParaRevisador(UsuarioEF revisador)
+        public List<CuestionarioEF> ListarParaRevisador(string revisador)
         {
-            return revisador.Cuestionarios.ToList();
+            var query = from c in _db.Cuestionarios
+                        join rc in _db.RevisadoresCuestionarios on c.Id equals rc.CuestionarioId
+                        where rc.Revisador == revisador
+                        select c;
+
+            
+            return query.ToList();
+        }
+
+        public List<string> listarRevisadores(int cuestionarioID)
+        {
+            var query = from c in _db.Cuestionarios
+                        join rc in _db.RevisadoresCuestionarios on c.Id equals rc.CuestionarioId
+                        where rc.CuestionarioId == cuestionarioID
+                        select rc.Revisador;
+
+            return query.ToList();
         }
     }
 }

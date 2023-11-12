@@ -15,11 +15,12 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
 
         #region Private Attributes
-        private readonly string _conectionString = "workstation id=DataBaseCuestionarios.mssql.somee.com; " +
-                    "user id=BrayanVafer_SQLLogin_1; pwd=k6f8dobsfa; " +
-                    "data source=DataBaseCuestionarios.mssql.somee.com; " +
-                    "persist security info=False; " +
-                    "initial catalog=DataBaseCuestionarios;";
+        private readonly string _conectionString = "" +
+            "Server=163.178.107.10; " +
+            "Initial Catalog=DataBaseCuestionarios; " +
+            "Persist Security Info=False; " +
+            "User ID=laboratorios; " +
+            "Password=TUy&)&nfC7QqQau.%278UQ24/=%;";
         private SqlConnection _objSqlConnection;
         private SqlCommand _objSqlCommand;
         private SqlDataAdapter _objSqlDataAdapter;

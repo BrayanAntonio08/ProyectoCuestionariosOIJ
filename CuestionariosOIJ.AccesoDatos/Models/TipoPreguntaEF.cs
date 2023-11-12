@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace CuestionariosOIJ.AccesoDatos.Models
 {
-    public partial class TipoCuestionarioEF
+    public partial class TipoPreguntaEF
     {
-        public TipoCuestionarioEF()
+        public TipoPreguntaEF()
         {
-            Cuestionarios = new HashSet<CuestionarioEF>();
+            Preguntas = new HashSet<PreguntaEF>();
         }
 
         public int Id { get; set; }
         public string Nombre { get; set; } = null!;
 
-        public virtual ICollection<CuestionarioEF> Cuestionarios { get; set; }
+        public virtual ICollection<PreguntaEF> Preguntas { get; set; }
     }
 }

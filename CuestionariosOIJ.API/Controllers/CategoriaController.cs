@@ -1,5 +1,4 @@
 ﻿using Cuestionarios.Domain;
-using CuestionariosOIJ.API.Models;
 using CuestionariosOIJ.ReglasNegocio;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,10 +22,10 @@ namespace CuestionariosOIJ.API.Controllers
 
             // Guardar la categoria
             CategoriaRN business = new CategoriaRN();
-            business.InsertarCategoria(categoria);
+            Categoria result = business.InsertarCategoria(categoria);
 
             // Devolver una respuesta exitosa
-            return await Task.FromResult(Ok(business.ObtenerPorNombre(categoria.Nombre)));
+            return await Task.FromResult(Ok(result));
         }
 
         [HttpGet(Name = "ListarCategorias")]
