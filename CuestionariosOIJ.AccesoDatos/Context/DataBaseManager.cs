@@ -15,7 +15,7 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
 
         #region Private Attributes
-        private readonly string _conectionString = "" +
+        private readonly string _connectionString = "" +
             "Server=163.178.107.10; " +
             "Initial Catalog=DataBaseCuestionarios; " +
             "Persist Security Info=False; " +
@@ -71,7 +71,7 @@ namespace CuestionariosOIJ.AccesoDatos.Context
             switch(dataBaseManager.DbName)
             {
                 case "db_cuestionarios":
-                    dataBaseManager.ObjSqlConnection = new SqlConnection(this._conectionString);
+                    dataBaseManager.ObjSqlConnection = new SqlConnection(this._connectionString);
                     break;
             }
         }

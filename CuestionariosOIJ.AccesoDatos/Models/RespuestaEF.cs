@@ -15,6 +15,7 @@ namespace CuestionariosOIJ.AccesoDatos.Models
         public DateTime FechaRespondida { get; set; }
         public DateTime? FechaEliminada { get; set; }
         public int PreguntaId { get; set; }
+        public string RespuestaCuestionarioId {  get; set; }
 
         public virtual PreguntaEF Pregunta { get; set; } = null!;
         public virtual JustiicacionRespuestaEF? JustiicacionRespuesta { get; set; }

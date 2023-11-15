@@ -77,7 +77,7 @@ namespace CuestionariosOIJ.ReglasNegocio
             resultado.Etiqueta = item.Etiqueta;
             resultado.Obligatoria = item.Obligatoria;
             resultado.Subcategoria = new SubcategoriaRN().ObtenerPorID(item.SubcategoriaId);
-            resultado.TipoRespuesta = item.TipoPregunta.Nombre;
+            resultado.TipoRespuesta = _data.consultarTipoPregunta(item.TipoPreguntaId);
             resultado.ContenidoPregunta = item.TextoPregunta;
             resultado.Posicion = item.Posicion;
             resultado.Opciones = new OpcionRespuestaRN().ListarOpcionesRespuesta(item.Id);

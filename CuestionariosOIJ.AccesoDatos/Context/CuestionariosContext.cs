@@ -207,6 +207,8 @@ namespace CuestionariosOIJ.AccesoDatos.Context
 
                 entity.Property(e => e.PreguntaId).HasColumnName("PreguntaID");
 
+                entity.Property(e => e.RespuestaCuestionarioId).HasColumnName("RespuestaCuestionarioID");
+
                 entity.Property(e => e.TextoRespuesta)
                     .HasMaxLength(300)
                     .IsUnicode(false);

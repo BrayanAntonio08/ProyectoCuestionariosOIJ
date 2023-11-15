@@ -21,15 +21,16 @@ namespace CuestionariosOIJ.ReglasNegocio
             _data = new RespuestaData(new CuestionariosContext());
         }
 
-        public void InsertarRespuesta(Respuesta respuesta)
+        public void InsertarRespuesta(Respuesta respuesta, string respuestaCuestionarioID)
         {
-            
+
             // Crea un nuevo objeto RespuestaEF
             RespuestaEF nuevoItem = new RespuestaEF()
             {
                 TextoRespuesta = respuesta.TextoRespuesta,
                 FechaRespondida = DateTime.Now,
-                PreguntaId = respuesta.PreguntaRespondida.Id
+                PreguntaId = respuesta.PreguntaRespondida.Id,
+                RespuestaCuestionarioId = respuestaCuestionarioID
             };
 
             int id = _data.InsertarRespuesta(nuevoItem);
@@ -69,18 +70,18 @@ namespace CuestionariosOIJ.ReglasNegocio
             List<Respuesta> resultado = new List<Respuesta>();
             CuestionarioEF cuestionarioEF = new CuestionarioData().ObtenerPorID(cuestionario);
             List<RespuestaEF> itemsGuardados = _data.ListarRespuestasTotales(cuestionarioEF);
+
+            PreguntaRN preguntaRN = new PreguntaRN();
             foreach (var item in itemsGuardados)
             {
+                Pregunta pregunta = preguntaRN.ObtenerPreguntaPorID(item.PreguntaId);
                 resultado.Add(
                     new Respuesta()
                     {
                         Id = item.Id,
                         TextoRespuesta = item.TextoRespuesta,
-                        TipoRespuesta = item.Pregunta.TipoPregunta.Nombre,
-                        PreguntaRespondida = new Pregunta() { 
-                        Id = item.Pregunta.Id,
-                        ContenidoPregunta = item.Pregunta.TextoPregunta
-                        },
+                        TipoRespuesta = pregunta.TipoRespuesta,
+                        PreguntaRespondida = pregunta,
                         Encuestado = item.UsuarioRespuesta?.Usuario,
                         Periodo = item.FechaEliminada,
                     }
@@ -142,7 +143,40 @@ namespace CuestionariosOIJ.ReglasNegocio
             return resultado;
         }
 
+        public List<Dictionary<string, object>> ReporteExcel(int cuestionarioId)
+        {
+            List<Dictionary<string, object>> resultados = new List<Dictionary<string, object>>();
+            List<RespuestaData.RespuestaUsuario> respuestasCuestionarios = _data.ListarUsuariosRespondidos(cuestionarioId);
+            List<Pregunta> preguntas = new PreguntaRN().ListarPreguntas(cuestionarioId);
 
+            foreach(RespuestaData.RespuestaUsuario respuestaCuestionario in respuestasCuestionarios)
+            {
+                Dictionary<string, object> resultado = new Dictionary<string, object>();
+                resultado.Add("Codigo", respuestaCuestionario.RespuestaCuestionarioId);
+                resultado.Add("Fecha", respuestaCuestionario.Fecha.ToShortDateString());
+                resultado.Add("Usuario", respuestaCuestionario.Usuario);
+                
+                //cargar las preguntas
+                foreach(Pregunta pregunta in preguntas)
+                {
+                    resultado.Add(pregunta.ContenidoPregunta, "");
+                }
+
+                //cargar respuestas en los espacios de las preguntas
+                List<object> respuestas = _data.ObtenerRespuestas(respuestaCuestionario.RespuestaCuestionarioId);
+                foreach (var respuesta in respuestas)
+                {
+                    string respuestaString = (string) respuesta.GetType().GetProperty("Respuesta").GetValue(respuesta);
+                    if(respuestaString == "EX100-vary")
+                    {
+                        respuestaString = _data.LeerOpcionesRespuesta((int)respuesta.GetType().GetProperty("Id").GetValue(respuesta));
+                    }
+                    resultado[(string)respuesta.GetType().GetProperty("Pregunta").GetValue(respuesta)] = respuestaString;
+                }
+                resultados.Add(resultado);
+            }
+            return resultados;
+        }
 
     }
 }
