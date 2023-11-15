@@ -18,10 +18,12 @@ namespace CuestionariosOIJ.API.Controllers
                 return await Task.FromResult(BadRequest("Los datos recibidos son inválidos."));
             }
 
-            // Guardar la categoria
+            Guid id = Guid.NewGuid();
+            string respuestaCuestionarioId = id.ToString();
+
             RespuestaRN business = new RespuestaRN();
             foreach (var respuesta in respuestas)
-                business.InsertarRespuesta(respuesta);
+                business.InsertarRespuesta(respuesta, respuestaCuestionarioId);
 
             // Devolver una respuesta exitosa
             return await Task.FromResult(Ok());
@@ -74,7 +76,15 @@ namespace CuestionariosOIJ.API.Controllers
             BorradoRespuestaRN business = new BorradoRespuestaRN();
             business.EliminarRespuesta(respuesta);
 
-            return await Task.FromResult(Ok()); ;
+            return await Task.FromResult(Ok());
+        }
+
+        [HttpGet]
+        [Route("Excel/{cuestionarioId}")]
+        public async Task<ActionResult> ReporteExcel(int cuestionarioId)
+        {
+            RespuestaRN respuestaRN = new RespuestaRN();
+            return await Task.FromResult(Ok(respuestaRN.ReporteExcel(cuestionarioId)));
         }
     }
 }

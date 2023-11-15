@@ -1,7 +1,9 @@
 ﻿using CuestionariosOIJ.AccesoDatos.Context;
 using CuestionariosOIJ.AccesoDatos.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
@@ -109,6 +111,94 @@ namespace CuestionariosOIJ.AccesoDatos.EntitiesAD
                 ToList();
         }
 
+        public class RespuestaUsuario
+        {
+            public string? Usuario { get; set; }
+            public string? RespuestaCuestionarioId { get; set; }
+
+            public DateTime Fecha {  get; set; }
+        }
+        public List<RespuestaUsuario> ListarUsuariosRespondidos(int cuestionarioId)
+        {
+            var resultados = from r in _db.Respuestas
+                             join ur in _db.UsuariosRespuesta on r.Id equals ur.RespuestaId into usuariosRespuestas
+                             from ur in usuariosRespuestas.DefaultIfEmpty() // Left Join
+                             join p in _db.Preguntas on r.PreguntaId equals p.Id
+                             where p.CuestionarioId == cuestionarioId
+                             group new
+                             {
+                                 r.RespuestaCuestionarioId,
+                                 FechaRespondida = new DateTime(r.FechaRespondida.Year, r.FechaRespondida.Month, r.FechaRespondida.Day),
+                                 Usuario = ur != null ? ur.Usuario : "Anónimo"
+                             } by new
+                             {
+                                 r.RespuestaCuestionarioId,
+                                 FechaRespondida = new DateTime(r.FechaRespondida.Year, r.FechaRespondida.Month, r.FechaRespondida.Day),
+                                 Usuario = ur != null ? ur.Usuario : "Anónimo"
+                             } into g
+                             select new
+                             {
+                                 RespuestaCuestionarioId = g.Key.RespuestaCuestionarioId,
+                                 Fecha = g.Key.FechaRespondida,
+                                 Usuario = g.Key.Usuario
+                             };
+            List<RespuestaUsuario> usuarios = new List<RespuestaUsuario>();
+            foreach(var resultado in resultados)
+            {
+                usuarios.Add(new RespuestaUsuario
+                {
+                    RespuestaCuestionarioId = resultado.RespuestaCuestionarioId,
+                    Usuario = resultado.Usuario,
+                    Fecha = resultado.Fecha
+                });
+            }
+            return usuarios;
+        }
+
+        public List<object> ObtenerRespuestas(string resultadoCuestionarioId)
+        {
+            using(var db = new CuestionariosContext())
+            {
+                var resultados = 
+                    from r in db.Respuestas
+                                 join p in db.Preguntas on r.PreguntaId equals p.Id
+                                 join tp in db.TiposPregunta on p.TipoPreguntaId equals tp.Id
+                                 where r.RespuestaCuestionarioId == resultadoCuestionarioId
+                                 select new
+                                 {
+                                     Id = r.Id,
+                                     Pregunta = p.TextoPregunta,
+                                     Respuesta = !tp.Nombre.StartsWith("Seleccion") ? r.TextoRespuesta : "EX100-vary"
+                                 };
+
+                List<object> list = new List<object>();
+                foreach(var item in resultados)
+                {
+                    list.Add(new { 
+                        Id = item.Id,
+                        Pregunta = item.Pregunta,
+                        Respuesta = item.Respuesta
+                    });
+                }
+
+                return list;
+            }
+        }
+
+        public string LeerOpcionesRespuesta(int respuestaId)
+        {
+            //var consulta = from r in _db.Respuestas
+            //               where r.Id == respuestaId
+            //               select r;
+            ICollection<OpcionRespuestaEF> opciones = _db.Respuestas.Include(res => res.OpcionRespuesta).FirstOrDefault(res => res.Id == respuestaId).OpcionRespuesta;
+            string respuesta = "";
+            foreach (var opcion in opciones)
+            {
+                if (respuesta.Length > 0) respuesta += ", ";
+                respuesta += opcion.TextoOpcion;
+            }
+            return respuesta;
+        }
         public List<RespuestaEF> ListarRespuestasTotalesPorPregunta(PreguntaEF pregunta)
         {
             return _db.Respuestas.
